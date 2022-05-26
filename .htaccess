@@ -1,0 +1,24 @@
+Header set Cache-Control "no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires 0
+
+# here we will rewrite rule
+# we rewrite engine
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} \.php$
+RewriteRule . index.php [L]
+
+RewriteCond %{SERVER_ADDR} 127\.0\.0\.1
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} !^/[a-z0-9_]+/static
+RewriteRule . index.php [L]
+
+RewriteCond %{SERVER_ADDR} !^127\.0\.0\.1$
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} !/static
+RewriteRule . index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]

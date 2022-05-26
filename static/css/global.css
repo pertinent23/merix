@@ -1,0 +1,31 @@
+:root{
+    --cultured: #f8f9faff;
+    --cultured-2: #e9ecefff;
+    --gainsboro: #dee2e6ff;
+    --light-gray: #ced4daff;
+    --cadet-blue-crayola: #adb5bdff;
+    --sonic-silver: #6c757dff;
+    --davys-grey: #495057ff;
+    --onyx: #343a40ff;
+    --eerie-black: #212529ff;
+    --purple: #7400b8ff;
+    --french-violet: #6930c3ff;
+    --slate-blue: #5e60ceff;
+    --united-nations-blue: #5390d9ff;
+    --carolina-blue: #4ea8deff;
+    --cyan-process: #48bfe3ff;
+    --sky-blue-crayola: #56cfe1ff;
+    --medium-turquoise: #64dfdfff;
+    --turquoise: #72efddff;
+    --aquamarine: #80ffdbff;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+*{
+    font-family: ubuntu;
+    position: relative;
+}

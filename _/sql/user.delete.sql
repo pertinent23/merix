@@ -1,0 +1,1 @@
+DELETE FROM `USERS` WHERE user_id = :id;
