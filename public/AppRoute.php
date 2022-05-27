@@ -20,4 +20,8 @@
             ]
         ] )
     ) );
+
+    AppRouter::addRoute( 'test/a', (
+        AppPacker::view( 'test', [] )
+    ) );
 ?>
