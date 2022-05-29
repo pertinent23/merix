@@ -21,7 +21,9 @@
         ] )
     ) );
 
-    AppRouter::addRoute( 'test/a', (
-        AppPacker::view( 'test', [] )
+    AppRouter::addRoute( 'welcome', (
+        AppPacker::view( 'test', [
+            'name' => 'Franck'
+        ] )
     ) );
 ?>
