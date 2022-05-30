@@ -1,13 +1,12 @@
 <?php 
     namespace App\modules\db\AppDataBase;
-        use App\modules\AppFileManager\AppFileManager;
-        use App\modules\AppPacker\AppPacker;
         use PDO;
         use PDOException;
+        use App\modules\AppPacker\AppPacker;
 
         global $configs;
-        $configs = include(
-            AppFileManager::getConfigsPath()
+        $configs = (
+            AppPacker::getConfigs()
         );
 
         class DataBase{

@@ -38,6 +38,10 @@
 
             public function json( array $list ) : void {
                 echo json_encode( $list );
+                $this->send();
+            }
+
+            public function send() : void {
                 die();
             }
 

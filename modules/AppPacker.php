@@ -153,5 +153,13 @@
             public static function startRoutes() : void {
                 require_once( AppFileManager::getRoutesPath() );
             }
+
+            public static function getConfigs( string $name = '__configs' ) : array {
+                $path = AppFileManager::getConfigsPath( $name );
+                if ( file_exists( $path ) ) {
+                    $json = \file_get_contents( $path );
+                    return json_decode( $json, true );
+                }
+            }  
         }
 ?>

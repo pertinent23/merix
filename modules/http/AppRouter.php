@@ -4,7 +4,20 @@
         use App\modules\http\AppGlobal\AppGlobal;
 
         class AppRouter{
-            public static array $routes = [ ];
+            /** 
+                *
+                * this field will content all
+                * routes of our apps 
+            */
+            public static array $routes = [];
+
+            /** 
+                *
+                * this field will content 
+                * all middlewares of our apps
+            */
+            public static array $middlewares = [];
+
             /** 
                 *
                 * this function will be use
@@ -14,6 +27,15 @@
                 if ( !array_key_exists( $path, AppRouter::$routes ) ) {
                     AppRouter::$routes[ $path ] = $response;
                 }
+            }
+
+            /** 
+                *
+                * this function will be use
+                * to add a new middleware to our website 
+            */
+            public static function addMiddleWare( callable $needed ) : void {
+                array_push( AppRouter::$middlewares, $needed );
             }
 
             /** 
@@ -31,7 +53,7 @@
                 * route exist 
             */
             public static function isRoute( string $name ) : bool {
-                return in_array( $name, AppRouter::$routes );
+                return array_key_exists( $name, AppRouter::$routes );
             }
 
             /** 
@@ -47,12 +69,22 @@
                         )
                     ] );
                 } else if ( is_callable( $app ) ) {
-                    AppRouter::executeRoute(
-                        $app( new AppGlobal(
-                            $path
-                        ) )
-                    );
+                    $result = $app( new AppGlobal(
+                        $path
+                    ) );
+                    if ( $result instanceof AppView ) {
+                        AppRouter::executeRoute( $result );
+                    }
                 }
+            }
+
+            /** 
+                *
+                * this function will return all 
+                * middlewares of the routeur 
+            */
+            public static function getMiddleWares() : array {
+                return AppRouter::$middlewares;
             }
         }
 ?>

@@ -1,8 +1,8 @@
 <?php 
     namespace App\modules\http\AppEnv;
         use App\modules\http\AppRouter\AppRouter;
-        use App\modules\AppFileManager\AppFileManager;
         use App\modules\db\AppDataBase\DataBase;
+        use App\modules\AppPacker\AppPacker;
 
         class AppEnv{
             /** 
@@ -76,7 +76,13 @@
                     $route = AppRouter::findRoute( $path );
                     AppRouter::executeRoute( $route, $path );
                 } else {
-                    http_response_code( 404 );
+                    $middlewares = AppRouter::getMiddleWares();
+                        foreach( $middlewares as $fn ) {
+                            if ( is_callable( $fn ) ) {
+                                AppRouter::executeRoute( $fn, $path );
+                            }
+                        }
+                        http_response_code( 404 );
                         if ( AppRouter::isRoute( '**' ) ) {
                             $route = AppRouter::findRoute( '**' );
                             AppRouter::executeRoute( $route, $path );
@@ -117,7 +123,7 @@
                 * to init the data base object 
             */
             public static function initDB() : void {
-                $configs = include( AppFileManager::getConfigsPath() );
+                $configs = AppPacker::getConfigs();
                     $db = new DataBase( $configs );
                 AppEnv::$db = $db;
             }

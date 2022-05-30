@@ -6,7 +6,7 @@
         define( 'assets', 'static/assets/' );
         define( 'routes', './public/AppRoute.php' );
         define( 'sql', './_/sql/' );
-        define( 'configs', './_/' );
+        define( 'configs', './_/configs/' );
 
         function __split_file( string $name = "" ) {
             $result = preg_split( '#^App\\\#', $name );

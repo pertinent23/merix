@@ -153,7 +153,7 @@
             */
             public static function getConfigsPath( string $name = '__configs' ) : string {
                 if ( AppFileManager::verifyConfigsExist() ) {
-                    return constant( 'configs' )."$name.php";
+                    return constant( 'configs' )."$name.json";
                 }
                 return '';
             }
