@@ -1,0 +1,135 @@
+.content-page-options{
+    margin-top: 30px;
+}
+
+.list-buttons,
+.list-item{
+    min-height: 100px;
+    max-height: min-content;
+    max-width: 700px;
+    margin: 7px 0px;
+}
+
+.list-item .list-item-content-image{
+    max-width: 35%;
+    overflow: hidden;
+}
+
+.list-item .list-item-content-image img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.list-item .list-item-icon{
+    background-color: var(--davys-grey);
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    font-size: 50px;
+    color: var(--cultured-2);
+}
+
+.list-item .list-item-content-data{
+    flex: 1;
+    padding-left: 10px;
+}
+
+@media screen and ( max-width: 576px ) {
+    .list-item .list-item-content-image{
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .list-item .list-item-icon{
+        width: 100%;
+        height: 150px;
+        font-size: 80px;
+    }
+
+    .list-item .list-item-content-data{
+        width: 100%;
+        padding-top: 10px;
+    }
+}
+
+.list-item .list-item-content-data span{
+    font-size: 1.1em;
+    text-transform: capitalize;
+    margin-bottom: 7px;
+}
+
+.list-item .list-item-content-data span.fit{
+    font-size: 0.8em;
+}
+
+.list-item .list-item-content-data p{
+    margin: 0px;
+    margin-bottom: 7px;
+    font-size: 0.9em;
+    color: var(--davys-grey);
+}
+
+.list-item .list-item-button-container{
+    margin: 0px;
+    margin-bottom: 7px;
+}
+
+.list-buttons button,
+.list-item .list-item-button-container button{
+    margin: 0px;
+    margin-right: 7px;
+    background-color: var( --davys-grey );
+    color: var(--cultured-2);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.list-buttons button{
+    padding: 10px 20px;
+    font-size: 16px;
+    box-sizing: content-box;
+    border-radius: 5px;
+}
+
+.list-buttons button.submit{
+    background-color: var(--purple);
+    color: var(--cultured);
+    border: 3px solid var(--purple);
+}
+
+.list-buttons button.cancel{
+    background-color: var(--cultured);
+    color: var(--purple);
+    border: 3px solid var(--purple);
+}
+
+.list-buttons button span,
+.list-item .list-item-button-container button span{
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.list-item .list-loader{
+    margin-bottom: 7px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 7px;
+    background-color: var(--cultured-2);
+    border-radius: 7px;
+    max-width: 250px;
+    overflow: hidden;
+}
+
+.list-item .list-loader .list-loader-item{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 25%;
+    background-color: var(--davys-grey);
+    border-radius: 10px;
+}

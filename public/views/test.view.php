@@ -1,1 +1,0 @@
-<h1> Bienvenu <?= $name ?> </h1>

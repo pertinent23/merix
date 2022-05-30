@@ -3,27 +3,29 @@
         use App\modules\http\AppRouter\AppRouter;
         use App\modules\AppPacker\AppPacker;
 
-    $globals = [
-        AppPacker::addCSSView( 'global' ),
-        AppPacker::addCSSView( 'icons' ),
-        AppPacker::addJSView( 'global' ),
-    ];
+    function useRoot( string $title = 'MERIX', array $body = [], array $head = [] ) : callable {
+        return fn() => (
+            AppPacker::view( 'components/root', [
+                'title'=> $title, 
+                'head' => $head,
+                'body' => $body
+            ] )
+        );
+    }
 
-    AppRouter::addRoute( 'index', fn() => (
-        AppPacker::view( 'components/root', [
-            'title'=> 'MERIX', 
-            'head' => [
-                ...$globals
-            ],
-            'body' => [
-                AppPacker::view( 'index' )
-            ]
-        ] )
+    AppRouter::addRoute( 'index', (
+        useRoot(
+            'MERIX',
+            [ AppPacker::addCSSView( '_index' ) ],
+            [ AppPacker::view( 'index' ) ]
+        )
     ) );
 
-    AppRouter::addRoute( 'welcome', (
-        AppPacker::view( 'test', [
-            'name' => 'Franck'
-        ] )
+    AppRouter::addRoute( 'form', (
+        useRoot(
+            'MERIX',
+            [ AppPacker::addCSSView( '_form' ) ],
+            [ AppPacker::view( 'form' ) ]
+        )
     ) );
 ?>
