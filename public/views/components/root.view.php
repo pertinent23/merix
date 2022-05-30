@@ -31,9 +31,8 @@
 </head>
 <body>
     <?= isset( $body ) AND ( $body instanceof AppView OR is_array( $body ) ) ? AppPacker::showAll( $body ) : '' ?>
-    <?php 
-        AppPacker::render( 'loader' );
-        AppPacker::addJS( 'loader' );
-    ?>
+    <?php AppPacker::render( 'loader' ); ?>
+    <?= isset( $lazy ) AND ( $lazy instanceof AppView OR is_array( $lazy ) ) ? AppPacker::showAll( $lazy ) : '' ?>
+    <?php AppPacker::addJS( 'loader' ); ?>
 </body>
 </html>

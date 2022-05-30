@@ -14,11 +14,11 @@
                     <i class="bi bi-grid-1x2-fill"></i>
                     <p class="d-none d-sm-flex"> Accueil </p>
                 </a>
-                <a href="./form" class="d-flex align-items-center navbar-item">
+                <a class="d-flex align-items-center navbar-item">
                     <i class="bi bi-person-circle"></i>
                     <p class="d-none d-sm-flex"> Connexion </p>
                 </a>
-                <a href="./form" class="d-flex align-items-center navbar-item">
+                <a class="d-flex align-items-center navbar-item inscription">
                     <i class="bi bi-pencil-square"></i>
                     <p class="d-none d-sm-flex"> Inscription </p>
                 </a>
@@ -28,7 +28,7 @@
             <div class="slide-1 slide">
                 <div class="slide-title"> Bienvenue dans notre Content Management System, <span> Merix </span> </div>
                 <p> Vous pourrez créer et personnaliser un site web pour votre commune afin d'accroître son tourisme et d'augmanter la rapidité administrative et la transparence. </p>
-                <div class="button d-flex justify-content-center align-items-center">
+                <div class="button d-flex justify-content-center align-items-center inscription">
                     <i class="bi bi-puzzle-fill"></i>
                     <span> Commencer </span>
                 </div>
@@ -84,7 +84,7 @@
                     <i class="bi bi-stack"></i>
                 </div>
                 <div class="slide-data-title"> Commencer des maintenant </div>
-                <div class="button d-flex align-items-center">
+                <div class="button d-flex align-items-center inscription">
                     <i class="bi bi-puzzle-fill"></i>
                     <span> Commencer </span>
                 </div>
