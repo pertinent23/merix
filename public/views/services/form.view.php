@@ -8,7 +8,7 @@
 <main class="d-flex justify-content-center align-items-center w-100">
     <form class="d-flex flex-column align-items-center w-100">
         <div class="form-title w-100"> Connexion </div>
-        <div class="form-description w-100 d-flex align-items-center"> a short description for the form </div>
+        <div class="form-description d-flex align-items-center"> a short description for the form </div>
         <section class="form-content-field d-flex flex-column align-items-center justify-content-center w-100">
             <!--
                 <div class="field w-100 d-flex">

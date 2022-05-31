@@ -7,7 +7,7 @@
 </nav>
 <main class="w-100 d-flex flex-column">
     <section class="d-flex content-page-options justify-content-center">
-        <div class="page-option page-item d-flex flex-column align-items-center justify-content-center">
+        <div class="page-option page-item d-flex flex-column align-items-center justify-content-center" id="add-new">
             <div class="page-option-icon d-flex justify-content-center align-items-center">
                 <i class="bi bi-window-plus"></i>
             </div><br>

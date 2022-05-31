@@ -1,4 +1,6 @@
 ( wn => {
+    'use strict';
+    
     String.prototype.json = function () {
         return JSON.parse( this );
     };
@@ -249,7 +251,7 @@
         * to manage service in a  
         * web page
     */
-    tools.ServiceManager = function ( path ) {
+    tools.ServiceManager = function ( path, type ) {
         const context = this;
         let 
             frame = undefined,
@@ -315,7 +317,7 @@
                 params = `popup=true,width=${options.width},height=${options.height},left=${pos.x},top=${pos.y},noopener=false`;
             return frame = window.open(
                 path,
-                '_blank',
+                type || '_blank',
                 params
             );
         }
@@ -595,11 +597,13 @@
     /**
         * 
         * @param {String} path 
+        * @param {Object} data 
+        * @param {Object} details 
         * @returns {Promise<Object>}
         * * 
         * this function will provide service manager promise
     */
-    tools.subscribeService = function ( path, data = {} ) {
+    tools.subscribeService = function ( path, data = {}, details = {} ) {
         return new Promise( ( resolve, reject ) => {
             if ( path in tools.services ) {
                 if ( tools.services[ path ] ) {
@@ -610,7 +614,9 @@
                 } );
             }
             const 
-                service = new tools.ServiceManager( path );
+                params = typeof details.params === 'object' ? details.params : {},
+                type = typeof details.type === 'string' ? details.type : '_blank',
+                service = new tools.ServiceManager( path, type );
                     service.onError( err => reject( err ) );
                     service.onResult( data => resolve( data ) );
                     service.onCancel( () => reject( {
@@ -771,13 +777,31 @@
     /**
         * 
         * @param {Object} data 
+        * @param {Object} detail
         * @returns {Promise}
         * *
         * this function will be use to manage
         * form service
     */
-    tools.formService = function ( data = {} ) {
-        return tools.subscribeService( tools.getService( '_/_/form' ), data );
+    tools.formService = function ( data = {}, detail = {} ) {
+        if ( typeof data !== 'object' || typeof detail !== 'object' )
+            throw new Error( 'formService params should be objects' );
+        return tools.subscribeService( tools.getService( '_/_/form' ), data, detail );
+    };
+
+    /**
+        * 
+        * @param {Object} data 
+        * @param {Object} detail
+        * @returns {Promise}
+        * *
+        * this function will be use to manage
+        * file service
+    */
+     tools.fileService = function ( data = {}, detail = {} ) {
+        if ( typeof data !== 'object' || typeof detail !== 'object' )
+            throw new Error( 'fileService params should be objects' );
+        return tools.subscribeService( tools.getService( '_/_/file' ), data, detail );
     };
     
     wn.tools = tools;

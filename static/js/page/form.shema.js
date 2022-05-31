@@ -1,4 +1,6 @@
 ( wn => {
+    'use strict';
+    
     const shema = {
         list: {},
 
@@ -289,7 +291,7 @@
         */
         this.addInput = function ( name, type, options = {} ) {
             options = typeof options === 'object' ? options : {};
-            validators = Array.isArray( options.validators ) ? options.validators : [];
+            const validators = Array.isArray( options.validators ) ? options.validators : [];
                 if ( typeof name === 'string' ) {
                     addField( name, {
                         type: getValidType( type ),

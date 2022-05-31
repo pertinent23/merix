@@ -110,6 +110,7 @@ form{
 .field label{
     position: absolute;
     height: 100%;
+    width: 100%;
     padding-left: 15px;
     background: var( --cultured );
     display: flex;
@@ -120,7 +121,7 @@ form{
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-weight: 600;
-    z-index: 10;
+    z-index: 7;
 }
 
 .field span{
@@ -150,15 +151,19 @@ form{
 .field .field-control:focus ~ label{
     color: var(--purple);
     height: fit-content;
+    width: fit-content;
     font-size: 0.65em;
     top: 10px;
     font-weight: bold;
+    background-color: transparent;
 }
 
 .field .field-control:not( :placeholder-shown ) ~ label{
     height: fit-content;
+    width: fit-content;
     font-size: 0.65em;
     top: 10px;
+    background-color: transparent;
 }
 
 .field .field-control:focus ~ span{

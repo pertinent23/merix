@@ -1,4 +1,6 @@
 ( wn  => {
+    'use strict';
+    
     const 
         tools = wn.tools,
         builder = {
