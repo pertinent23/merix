@@ -30,8 +30,8 @@
     <?= isset( $head ) AND ( $head instanceof AppView OR is_array( $head ) ) ? AppPacker::showAll( $head ) : '' ?>
 </head>
 <body>
-    <?= isset( $body ) AND ( $body instanceof AppView OR is_array( $body ) ) ? AppPacker::showAll( $body ) : '' ?>
     <?php AppPacker::render( 'loader' ); ?>
+    <?= isset( $body ) AND ( $body instanceof AppView OR is_array( $body ) ) ? AppPacker::showAll( $body ) : '' ?>
     <?= isset( $lazy ) AND ( $lazy instanceof AppView OR is_array( $lazy ) ) ? AppPacker::showAll( $lazy ) : '' ?>
     <?php AppPacker::addJS( 'loader' ); ?>
 </body>

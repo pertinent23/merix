@@ -2,6 +2,7 @@
     namespace App\modules\AppPacker;
         use App\modules\AppView\AppView as AppView;
         use App\modules\AppBundle\AppBundle as AppBundle;
+        use App\modules\http\AppGlobal\AppGlobal as AppGlobal;
         use App\modules\AppFileManager\AppFileManager as AppFileManager;
 
         class AppPacker{
@@ -32,6 +33,16 @@
             */
             public static function render( string $name, array $args = [ ] ) : void {
                 AppPacker::view( $name, $args )->run();
+            }
+
+            /**
+                *
+                * this function will be use to make
+                * redirections 
+            */
+            public static function redirectTo( string $path ): void {
+                    AppGlobal::header( 'location', AppFileManager::getLink( $path ) );
+                die();
             }
 
             /** 

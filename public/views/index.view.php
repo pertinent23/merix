@@ -14,7 +14,7 @@
                     <i class="bi bi-grid-1x2-fill"></i>
                     <p class="d-none d-sm-flex"> Accueil </p>
                 </a>
-                <a class="d-flex align-items-center navbar-item">
+                <a class="d-flex align-items-center navbar-item connection">
                     <i class="bi bi-person-circle"></i>
                     <p class="d-none d-sm-flex"> Connexion </p>
                 </a>

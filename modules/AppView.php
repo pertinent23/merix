@@ -49,6 +49,17 @@
                 return $this->args;
             }
 
+            /**
+                *
+                *  
+            */
+            protected function check() : void {
+                if ( !file_exists( $this->open() ) ) {
+                    http_response_code( 404 );
+                    exit( 1 );
+                }
+            }
+
             /** 
                 *
                 * this function will be use 
@@ -56,6 +67,7 @@
                 * tream 
             */
             public function run() : void {
+                $this->check();
                 extract( $this->getAgrs() );
                 ob_start();
                 require( $this->open() );
@@ -68,6 +80,7 @@
                 * exec the view and return is code 
             */
             public function exec() : string {
+                $this->check();
                 extract( $this->getAgrs() );
                 ob_start();
                 require( $this->open() );
