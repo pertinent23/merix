@@ -77,4 +77,8 @@
     AppRouter::addRoute( 'api/user/registration',  (
         AppPacker::view( 'api/registration' )
     ) );
+
+    AppRouter::addRoute( 'api/files',  (
+        AppPacker::view( 'api/files' )
+    ) );
 ?>

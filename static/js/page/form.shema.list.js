@@ -88,6 +88,7 @@
                 label: 'Historique',
                 icon: 'book-half'
             } )
+            .addImg( 'picture' )
             .toJSON()
     ) );
 } )( window.shema );

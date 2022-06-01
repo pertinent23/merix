@@ -1,8 +1,22 @@
-( ( { tools, builder, shema } ) => {
+( ( { tools, builder } ) => {
     let meta = {};
+    let image = false;
     const 
         service = tools.openService( window );
         service.onData( function ( data ) {
+            if ( typeof data === 'object' && typeof data.fields === 'object' ) {
+                for( const name in data.fields ) {
+                    const item = data.fields[ name ];
+                    if ( item.type === 'image' ) {
+                        image = {
+                            name,
+                            ...item
+                        };
+                        delete data.fields[ name ];
+                        break;
+                    }
+                }
+            }
             builder.build( data );
             meta = data;
         } );
@@ -29,15 +43,30 @@
         }
         builder.setError( '' );
         if ( meta.action ) {
-            return tools.request( {
-                url: meta.action,
-                method: meta.method || 'POST',
-                data: result
-            } ).then( result => {
-                return service.send( result.json() );
-            } ).catch( err => {
-                return builder.setError( err.text() );
-            } ).send();
+            if ( !image ) {
+                return tools.request( {
+                    url: meta.action,
+                    method: meta.method || 'POST',
+                    data: result
+                } ).then( result => {
+                    return service.send( result.json() );
+                } ).catch( err => {
+                    return builder.setError( err.text() );
+                } ).send();
+            } else {
+                const 
+                    data = {
+                        action: meta.action,
+                        method: meta.method || 'POST',
+                        data: result,
+                        needed: image
+                    };
+                tools.fileService( data ).then( r => (
+                    service.send( r )
+                ) ).catch( err => {
+                    service.throw( err );
+                } );
+            }
         }
     } )
 

@@ -7,6 +7,7 @@
 </nav>
 <main class="w-100 d-flex flex-column">
     <section class="d-flex content-page-options flex-column align-items-center">
+        <span class="list-error"></span>
         <input type="file" class="d-none" id="file">
         <label for="file" class="page-option page-item d-flex flex-column align-items-center justify-content-center" id="add-new">
             <div class="page-option-icon d-flex justify-content-center align-items-center">
@@ -90,14 +91,14 @@
                 </div>
             </div>
         -->
-        <div class="w-100 d-flex align-items-center list-buttons justify-content-center">
-            <button class="submit">
+        <div class="w-100 d-flex align-items-center list-buttons justify-content-center" id="insert-before">
+            <button class="submit" id="finish-service">
+                <i class="bi bi-wrench-adjustable-circle-fill"></i>
+                <span> CONTINUE </span>
+            </button>
+            <button class="cancel" id="cancel-service">
                 <i class="bi bi-x-octagon-fill"></i>
                 <span> CLOSE </span>
-            </button>
-            <button class="cancel">
-                <i class="bi bi-skip-end-circle-fill"></i>
-                <span> SKIP </span>
             </button>
         </div>
     </section>

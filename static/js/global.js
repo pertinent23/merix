@@ -251,7 +251,7 @@
         * to manage service in a  
         * web page
     */
-    tools.ServiceManager = function ( path, type ) {
+    tools.ServiceManager = function ( path, type, params ) {
         const context = this;
         let 
             frame = undefined,
@@ -373,6 +373,7 @@
             const 
                 wn = letsOpen();
                     setActive( wn );
+                    wn.serviceParams = params;
             useEvents( wn );
         };
     
@@ -616,7 +617,7 @@
             const 
                 params = typeof details.params === 'object' ? details.params : {},
                 type = typeof details.type === 'string' ? details.type : '_blank',
-                service = new tools.ServiceManager( path, type );
+                service = new tools.ServiceManager( path, type, params );
                     service.onError( err => reject( err ) );
                     service.onResult( data => resolve( data ) );
                     service.onCancel( () => reject( {

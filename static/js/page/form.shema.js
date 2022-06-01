@@ -281,6 +281,29 @@
 
         /**
             * 
+            * @param {String} key 
+            * @returns {Array}
+            * *
+            * this function will return a
+            * valid image extension list 
+            * using is key
+        */
+        function getImages( key ) {
+            const 
+                img = [ 'png', 'jpg', 'jpeg' ];
+            if ( key === 'pdf' ) {
+                return [ 'pdf' ];
+            } else {
+                if ( key === 'img-pdf' ) {
+                    img.push( 'pdf' );
+                    return img;
+                }
+            }
+            return img;
+        };
+
+        /**
+            * 
             * @param {String} name 
             * @param {String} type 
             * @param {Object} options
@@ -332,6 +355,28 @@
                         validators: getValidators( validators )
                     } );
                 }
+            return this;
+        };
+
+        /**
+            * 
+            * @param {String} name 
+            * @param {Boolean} multiple 
+            * @param {String} ext 
+            * @returns {shema.FormShema}
+            * *
+            * this function will be
+            * use to add image image 
+            * field to a form
+        */
+        this.addImg = function ( name, multiple, ext = 'img' ) {
+            if ( typeof name === "string" ) {
+                addField( name, {
+                    type: 'image',
+                    multiple: typeof multiple === 'boolean' ? multiple || false : false,
+                    exts: getImages( ext )
+                } );
+            }
             return this;
         };
 

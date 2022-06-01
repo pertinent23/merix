@@ -6,8 +6,19 @@
 .list-item{
     min-height: 100px;
     max-height: min-content;
-    max-width: 700px;
+    max-width: 600px;
     margin: 7px 0px;
+}
+
+.list-item{
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px #DDDDDD;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.list-item.fit{
+    max-width: 350px;
 }
 
 .list-item .list-item-content-image{
@@ -21,7 +32,7 @@
 }
 
 .list-item .list-item-icon{
-    background-color: var(--davys-grey);
+    background-color: var(--purple);
     height: 100px;
     width: 100px;
     border-radius: 10px;
@@ -78,7 +89,7 @@
 .list-item .list-item-button-container button{
     margin: 0px;
     margin-right: 7px;
-    background-color: var( --davys-grey );
+    background-color: var( --purple );
     color: var(--cultured-2);
     border: none;
     outline: none;
@@ -92,7 +103,7 @@
     padding: 10px 20px;
     font-size: 16px;
     box-sizing: content-box;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .list-buttons button.submit{
@@ -132,4 +143,11 @@
     width: 25%;
     background-color: var(--davys-grey);
     border-radius: 10px;
+}
+
+.list-error{
+    color: #F12;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    font-weight: 600;
 }
