@@ -13,7 +13,7 @@
             </div><br>
             <span class="page-item-title"> CREER </span>
         </div>
-        <a href="#" class="page-option page-item d-flex flex-column align-items-center justify-content-between">
+        <a href="dashboard" class="page-option page-item d-flex flex-column align-items-center justify-content-between">
             <div class="page-image d-flex justify-content-center align-items-center">
                 <i class="bi bi-images"></i>
                 <img src="../static/assets/images/fruit.png" alt="logo of the site">

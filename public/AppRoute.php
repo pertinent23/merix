@@ -33,7 +33,7 @@
 
     AppRouter::addRoute( 'account/sites', (
         useRoot(
-            'ACCUEIL',
+            'SITES',
             [ 
                 AppPacker::addCSSView( '_account' ),
                 AppPacker::addCSSView( '_sites' ),
@@ -42,6 +42,55 @@
             ], 
             [ AppPacker::view( 'sites' ) ],
             [ AppPacker::addJSView( 'page/sites' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/dashboard', (
+        useRoot(
+            'DASHBOARD',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addJSView( 'page/form.shema' ),
+                AppPacker::addJSView( 'page/form.shema.list' )
+            ], 
+            [ AppPacker::view( 'dashboard' ) ],
+            [ 
+                AppPacker::addJSView( 'page/dashboard' ),
+                AppPacker::addJSView( 'start-up' ) 
+            ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/settings', (
+        useRoot(
+            'PARAMETRES',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addJSView( 'page/form.shema' ),
+                AppPacker::addJSView( 'page/form.shema.list' )
+            ], 
+            [ AppPacker::view( 'settings' ) ],
+            [ 
+                AppPacker::addJSView( 'page/settings' ),
+                AppPacker::addJSView( 'start-up' ) 
+            ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/themes', (
+        useRoot(
+            'THEMES',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_themes' ),
+                AppPacker::addJSView( 'page/form.shema' ),
+                AppPacker::addJSView( 'page/form.shema.list' )
+            ], 
+            [ AppPacker::view( 'themes' ) ],
+            [ 
+                AppPacker::addJSView( 'page/themes' ),
+                AppPacker::addJSView( 'start-up' )
+            ]
         )
     ) );
 
