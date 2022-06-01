@@ -133,7 +133,7 @@
             * list 
         */
         addShema( name, data = {} ) {
-            if ( typeof name === 'string' && typeof data === 'object' ) {
+            if ( typeof name === 'string' && ( typeof data === 'object' || typeof data === 'function' ) ) {
                 this.list[ name ] = data;
             }
         },
@@ -225,7 +225,7 @@
         */
         function getValidType( type ) {
             const 
-                list = [ 'password', 'text', 'email', 'date', 'checkbox', 'radio', 'textarea' ];
+                list = [ 'password', 'text', 'email', 'date', 'checkbox', 'radio', 'textarea', 'number' ];
             return list.indexOf( type ) !== -1 ? type : list[ 1 ];
         };
 
@@ -343,7 +343,7 @@
         this.addSelect = function ( name, values = [], options = {} ) {
             options = typeof options === 'object' ? options : {};
             values = Array.isArray( values ) ? values : [];
-            validators = Array.isArray( options.validators ) ? options.validators : [];
+            const validators = Array.isArray( options.validators ) ? options.validators : [];
                 if ( typeof name === 'string' ) {
                     addField( name, {
                         type: 'select',

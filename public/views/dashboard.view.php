@@ -18,9 +18,9 @@
             <div class="page-option-icon d-flex justify-content-center align-items-center">
                 <i class="bi bi-house-fill"></i>
             </div>
-            <span class="page-option-title"> MARIE </span>
+            <span class="page-option-title"> MAIRIE </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="site" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-arrow-repeat"></i>
                 </a>
             </div>
@@ -34,13 +34,10 @@
             </div>
             <span class="page-option-title"> PROJETS </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addProject" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-patch-plus-fill"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
-                    <i class="bi bi-trash-fill"></i>
-                </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a href="list/projects" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-view-list"></i>
                 </a>
             </div>
@@ -52,15 +49,12 @@
             <div class="page-option-icon d-flex justify-content-center align-items-center">
                 <i class="bi bi-basket-fill"></i>
             </div>
-            <span class="page-option-title"> PUBLICITE </span>
+            <span class="page-option-title"> PUBLICITES </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addPub" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-cart-plus-fill"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
-                    <i class="bi bi-trash3-fill"></i>
-                </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a href="list/pubs" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-card-list"></i>
                 </a>
             </div>
@@ -74,14 +68,11 @@
             </div>
             <span class="page-option-title"> Tourisme </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a href="list/places" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-card-heading"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addPlace" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-patch-plus-fill"></i>
-                </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
-                    <i class="bi bi-trash3-fill"></i>
                 </a>
             </div>
             <p class="page-option-description">
@@ -94,10 +85,13 @@
             </div>
             <span class="page-option-title"> ANNONCES </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addPostType" class="page-option-action d-flex justify-content-center align-items-center">
+                    <i class="bi bi-map-fill"></i>
+                </a>
+                <a href="list/posts" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-card-heading"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addPost" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-brush-fill"></i>
                 </a>
             </div>
@@ -111,10 +105,10 @@
             </div>
             <span class="page-option-title"> ACTIVITES </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a href="list/activities" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-view-list"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addActivity" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-tags-fill"></i>
                 </a>
             </div>
@@ -128,10 +122,13 @@
             </div>
             <span class="page-option-title"> PERSONNEL </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addRole" class="page-option-action d-flex justify-content-center align-items-center">
+                    <i class="bi bi-exclude"></i>
+                </a>
+                <a href="list/employees" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-person-lines-fill"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="addEmployee" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-person-plus-fill"></i>
                 </a>
             </div>
@@ -145,11 +142,14 @@
             </div>
             <span class="page-option-title"> MON COMPTE </span>
             <div class="page-option-action-list d-flex justify-content-center align-items-center">
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a href="list/infos" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-postcard-fill"></i>
                 </a>
-                <a href="#" class="page-option-action d-flex justify-content-center align-items-center">
+                <a data-fx="updateAccount" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-vector-pen"></i>
+                </a>
+                <a data-fx="updatePassword" class="page-option-action d-flex justify-content-center align-items-center">
+                    <i class="bi bi-fingerprint"></i>
                 </a>
             </div>
             <p class="page-option-description">

@@ -68,7 +68,7 @@
         */
         attr( el, map = {}, value = '' ) {
             if ( el instanceof Element ) {
-                if ( map && typeof map === 'string' && value != null && value != undefined ) {
+                if ( map && typeof map === 'string' && value && typeof value !== 'number' ) {
                     el.setAttribute( map, value );
                 } else {
                     if ( typeof map ==='object' && !Array.isArray( map ) ) {

@@ -54,6 +54,7 @@
                         files.setError( `invalid file extension: '${ext}'` );
                     return;
                 }
+                files.setError( '' );
                 list[ id ] = item;
                 files.addListItem( {
                     icon:  ext === 'pdf' ? 'file-earmark-pdf-fill' : 'file-earmark-image',

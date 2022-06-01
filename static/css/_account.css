@@ -57,6 +57,7 @@ body{
     text-decoration: none;
     color: var( --onyx );
     transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 .page-option-action:hover{

@@ -94,6 +94,90 @@
         )
     ) );
 
+    AppRouter::addRoute( 'account/list/projects',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/projects' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/pubs',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/pubs' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/places',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/places' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/posts',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/posts' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/activities',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/activities' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/employees',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/employees' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/infos',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/infos' ) ]
+        )
+    ) );
+
     AppRouter::addRoute( '_/_/form', (
         useRoot(
             'MERIX',

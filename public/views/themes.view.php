@@ -21,7 +21,7 @@
             <span class="theme-add-title"> AJOUTER </span>
         </div>
         <div class="theme-item d-flex flex-column align-items-center justify-content-center">
-            <img src="../static/assets/images/screely-1653749724276.png" alt="theme mockup">
+            <img src="../static/assets/images/Screenshot from 2022-06-01 14-46-58.png" alt="theme mockup">
             <div class="theme-content-action d-flex justify-content-center align-items-center">
                 <button class="d-flex align-items-center">
                     <i class="bi bi-shuffle"></i>

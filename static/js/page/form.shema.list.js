@@ -91,4 +91,289 @@
             .addImg( 'picture' )
             .toJSON()
     ) );
+
+    shema.addShema( 'site-update', ( data ) =>  {
+        return shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'SITE' )
+            .setSubTitle( 'INFORMATIONS DE MON SITE' )
+            .setSubmit( 'MODIFIER', 'arrow-repeat' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom',
+                icon: 'file-earmark-person'
+            } )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom',
+                icon: 'bookmark-check-fill'
+            } )
+            .addInput( 'slogan', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Slogan',
+                icon: 'journal-text'
+            } )
+            .addInput( 'country', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Pays',
+                icon: 'globe2'
+            } )
+            .addInput( 'Disctrict', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Commune',
+                icon: 'geo-fill'
+            } )
+            .addInput( 'position', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Quartier',
+                icon: 'geo-alt-fill'
+            } )
+            .addInput( 'history', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Historique',
+                icon: 'book-half'
+            } )
+        .toJSON();
+    } )
+
+    shema.addShema( 'add-project', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'PROJETS' )
+            .setSubTitle( 'AJOUTER UN NOUVEAU PROJET' )
+            .setSubmit( 'AJOUTER', 'patch-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom du Project',
+                icon: 'cursor-text'
+            } )
+            .addInput( 'description', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Description',
+                icon: 'book-half'
+            } )
+            .addImg( 'picture' )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'add-pub', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'PUBLICITE' )
+            .setSubTitle( 'AJOUTER UNE NOUVELLE PUBLICITE' )
+            .setSubmit( 'AJOUTER', 'patch-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom de la pub',
+                icon: 'cursor-text'
+            } )
+            .addInput( 'description', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Description',
+                icon: 'book-half'
+            } )
+            .addImg( 'picture' )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'add-place', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'TOURISME' )
+            .setSubTitle( 'AJOUTER UN NOUVEAU SITE TOURISTIQUE' )
+            .setSubmit( 'AJOUTER', 'patch-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom du site',
+                icon: 'cursor-text'
+            } )
+            .addInput( 'description', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Description',
+                icon: 'book-half'
+            } )
+            .addImg( 'picture', true )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'add-post-type', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'ANNONCES' )
+            .setSubTitle( 'AJOUTER UN TYPE D\'ANNONCES' )
+            .setSubmit( 'AJOUTER', 'patch-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addSelect( 'label', [
+                { id: 'wedding', value: 'Mariage' },
+                { id: 'death', value: 'Décès' },
+                { id: 'birth', value: 'Naissance' },
+                { id: 'divorce', value: 'Divorce' },
+                { id: 'other', value: 'Autre' },
+            ], {
+                validators: [ 'required' ],
+                label: 'TYPE D\'ANNONCE',
+                icon: 'cursor-text',
+                selected: 'birth'
+            } )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'add-post', function () {
+        return shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'ANNONCES' )
+            .setSubTitle( 'CREER UNE ANNONCE' )
+            .setSubmit( 'CREER', 'patch-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addSelect( 'type', [
+                { id: 'wedding', value: 'Mariage' },
+                { id: 'death', value: 'Décès' },
+                { id: 'birth', value: 'Naissance' },
+                { id: 'divorce', value: 'Divorce' },
+                { id: 'other', value: 'Autre' },
+            ], {
+                validators: [ 'required' ],
+                label: 'TYPE D\'ANNONCE',
+                icon: 'lightning-charge-fill',
+                selected: 'birth'
+            } )
+            .addInput( 'label', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Titre',
+                icon: 'cursor-text'
+            } )
+            .addInput( 'description', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Description',
+                icon: 'book-half'
+            } )
+            .addImg( 'picture', true )
+        .toJSON()
+    } );
+
+    shema.addShema( 'add-activity', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'ACTIVITES' )
+            .setSubTitle( 'AJOUTER UNE NOUVELLE ACTIVITE' )
+            .setSubmit( 'AJOUTER', 'tags-fill' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom de l\'activité',
+                icon: 'cursor-text'
+            } )
+            .addInput( 'description', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Description',
+                icon: 'book-half'
+            } )
+            .addImg( 'picture', true )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'add-role', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'TYPES' )
+            .setSubTitle( 'AJOUTER UN TYPE DE POSTE' )
+            .setSubmit( 'AJOUTER', 'patch-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addSelect( 'label', [
+                { id: 'mayor', value: 'Maire' },
+                { id: 'deputy-mayor', value: 'Adjoint du Maire' },
+                { id: 'secretary', value: 'Sécrétaire' },
+                { id: 'other', value: 'Autre' },
+            ], {
+                validators: [ 'required' ],
+                label: 'TYPE DE POSTE',
+                icon: 'cursor-text'
+            } )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'add-employee', function () {
+        return shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'EMPLOYES' )
+            .setSubTitle( 'AJOUTER UN NOUVEL EMPLOYE' )
+            .setSubmit( 'AJOUTER', 'person-plus-fill' )
+            .setCancel( 'ANNULER' )
+            .addSelect( 'type', [
+                { id: 'mayor', value: 'Maire' },
+                { id: 'deputy-mayor', value: 'Adjoint du Maire' },
+                { id: 'secretary', value: 'Sécrétaire' },
+                { id: 'other', value: 'Autre' },
+            ], {
+                validators: [ 'required' ],
+                label: 'POSTE OCCUPE',
+                icon: 'cursor-text'
+            } )
+            .addInput( 'first_name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom',
+                icon: 'postcard-fill'
+            } )
+            .addInput( 'last_name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Prénom',
+                icon: 'puzzle-fill'
+            } )
+            .addInput( 'age', 'number', {
+                validators: [ 'required' ],
+                label: 'Age',
+                icon: '123'
+            } )
+            .addInput( 'background', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Pacours',
+                icon: 'book-half'
+            } )
+            .addImg( 'picture', true )
+        .toJSON()
+    } );
+
+    shema.addShema( 'update-password', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'PASSWORD' )
+            .setSubTitle( 'MODIFIER LE MOT DE PASSE DE MON COMPTE' )
+            .setSubmit( 'MODIFIER', 'fingerprint' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'password_1', 'password', {
+                validators: [ 'required', [ 'minlen', 5 ] ],
+                label: 'Mot de passe',
+                icon: 'shield-lock-fill'
+            } )
+            .addInput( 'password_2', 'password', {
+                validators: [ 'required', [ 'minlen', 5 ] ],
+                label: 'Mot de passe',
+                icon: 'shield-fill-check'
+            } )
+        .toJSON()
+    ) );
+
+    shema.addShema( 'update-account', (
+        shema
+            .createFormShema( 'api/user/registration', 'POST' )
+            .setTitle( 'MON COMPTE' )
+            .setSubTitle( 'METTRE A JOUR MON COMPTE' )
+            .setSubmit( 'MODIFIER', 'arrow-repeat' )
+            .setCancel( 'ANNULER' )
+            .addInput( 'name', 'text', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom',
+                icon: 'postcard-fill'
+            } )
+            .addInput( 'email', 'email', {
+                validators: [ 'required', 'email' ],
+                label: 'Email',
+                icon: 'envelope-plus-fill'
+            } )
+        .toJSON()
+    ) );
 } )( window.shema );

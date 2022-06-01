@@ -98,8 +98,8 @@
                         for( const item of options.options ) {
                             const 
                                 node = tools.create( 'option' );
+                                    node.selected = item.id === options.selected;
                                     tools.attr( node, {
-                                        selected: item.id === options.selected,
                                         value: item.id       
                                     } ).text( node, item.value );
                             field.appendChild( node );
