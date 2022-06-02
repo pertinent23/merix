@@ -11,6 +11,7 @@ body{
 .page-option{
     background-color: #FFFFFF;
     min-height: 230px;
+    max-height: min-content;
     min-width: 200px;
     max-width: 210px;
     box-shadow: 0px 0px 7px rgba(0,0,0, 0.12);

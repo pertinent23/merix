@@ -2,6 +2,7 @@
     border: none !important;
     cursor: pointer;
     border-radius: 15px;
+    max-height: 150px;
 }
 
 .page-item .page-option-icon{
