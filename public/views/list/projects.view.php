@@ -29,14 +29,16 @@
             </div>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
-            <div class="list-item-content-image d-flex justify-content-center align-items-center">
-                <div class="list-item-icon d-flex justify-content-center align-items-center">
-                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                </div>
+            <div class="list-item-content-image">
+                <img src="../../static/assets/images/Screenshot from 2022-06-01 14-46-58.png" alt="test">
             </div>
             <div class="list-item-content-data d-flex flex-column justify-content-center">
                 <span> Un short text </span>
-                <p> a long text to describe the content </p>
+                <p> 
+                    a long text to describe the content, a long text to describe the content
+                    a long text to describe the content a long text to describe the content,
+                    a long text to describe the content, a long text to describe the content
+                </p>
                 <div class="list-item-button-container d-flex align-items-center">
                     <button>
                         <i class="bi bi-x-octagon-fill"></i>
@@ -46,13 +48,12 @@
             </div>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
-            <div class="list-item-content-image d-flex justify-content-center align-items-center">
-                <div class="list-item-icon d-flex justify-content-center align-items-center">
-                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                </div>
+            <div class="list-item-content-image">
+                <img src="../../static/assets/images/Screenshot from 2022-06-01 14-46-58.png" alt="test">
             </div>
             <div class="list-item-content-data d-flex flex-column justify-content-center">
                 <span> Un short text </span>
+                <p> a long text to describe the content </p>
                 <div class="list-item-button-container d-flex align-items-center">
                     <button>
                         <i class="bi bi-x-octagon-fill"></i>

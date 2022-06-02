@@ -158,3 +158,6 @@
         </div>
     </section>
 </main>
+<div class="d-flex justify-content-center align-items-center" id="run-button">
+    <i class="bi bi-skip-end-fill"></i>
+</div>

@@ -13,13 +13,16 @@
 </nav>
 <main class="w-100 d-flex flex-column">
     <section class="d-flex content-page-options flex-column align-items-center">
-        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
-            <div class="list-item-content-image">
-                <img src="../../static/assets/images/Screenshot from 2022-06-01 14-46-58.png" alt="test">
+        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row padding">
+            <div class="list-item-content-image d-flex justify-content-center align-items-center">
+                <div class="list-item-icon d-flex justify-content-center align-items-center">
+                    <i class="bi bi-person-circle"></i>
+                </div>
             </div>
             <div class="list-item-content-data d-flex flex-column justify-content-center">
-                <span> Un short text </span>
-                <p> a long text to describe the content </p>
+                <span> <b> NAME: </b> last name, first name </span>
+                <span> <b> AGE: </b> his age </span>
+                <p> Here we have to describe the background of the employee </p>
                 <div class="list-item-button-container d-flex align-items-center">
                     <button>
                         <i class="bi bi-x-octagon-fill"></i>
@@ -28,15 +31,16 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
+        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row padding">
             <div class="list-item-content-image d-flex justify-content-center align-items-center">
                 <div class="list-item-icon d-flex justify-content-center align-items-center">
-                    <i class="bi bi-file-earmark-pdf-fill"></i>
+                    <i class="bi bi-person-circle"></i>
                 </div>
             </div>
             <div class="list-item-content-data d-flex flex-column justify-content-center">
-                <span> Un short text </span>
-                <p> a long text to describe the content </p>
+                <span> <b> NAME: </b> last name, first name </span>
+                <span> <b> AGE: </b> his age </span>
+                <p> Here we have to describe the background of the employee </p>
                 <div class="list-item-button-container d-flex align-items-center">
                     <button>
                         <i class="bi bi-x-octagon-fill"></i>
@@ -45,14 +49,16 @@
                 </div>
             </div>
         </div>
-        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
+        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row padding">
             <div class="list-item-content-image d-flex justify-content-center align-items-center">
                 <div class="list-item-icon d-flex justify-content-center align-items-center">
-                    <i class="bi bi-file-earmark-pdf-fill"></i>
+                    <i class="bi bi-person-circle"></i>
                 </div>
             </div>
             <div class="list-item-content-data d-flex flex-column justify-content-center">
-                <span> Un short text </span>
+                <span> <b> NAME: </b> last name, first name </span>
+                <span> <b> AGE: </b> his age </span>
+                <p> Here we have to describe the background of the employee </p>
                 <div class="list-item-button-container d-flex align-items-center">
                     <button>
                         <i class="bi bi-x-octagon-fill"></i>

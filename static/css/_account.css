@@ -10,7 +10,6 @@ body{
 
 .page-option{
     background-color: #FFFFFF;
-    height: fit-content;
     min-height: 230px;
     min-width: 200px;
     max-width: 210px;
@@ -26,6 +25,7 @@ body{
     background-color: var( --purple );
     height: 100px;
     width: 100px;
+    min-height: 100px;
     color: var(--cultured);
     border-radius: 5px;
     font-size: 50px;
@@ -74,10 +74,29 @@ body{
     color: var(--davys-grey);
 }
 
+#run-button{
+    position: fixed;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    background-color: var( --purple );
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+    font-size: 40px;
+    color: var( --cultured );
+    box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
+    transform: scale( 0.9 );
+    transition-duration: 0.2s;
+}
+
+#run-button:hover{
+    transform: scale( 1.1 );
+}
+
 @media screen and ( max-width: 576px ) {
     .page-option{
         margin: 5px;
-        height: 300px;
         width: 300px !important;
         max-width: none;
     }   
@@ -89,5 +108,13 @@ body{
     .page-option p{
         font-size: 1.2em;
         padding: 0px 20px;
+    }
+
+    #run-button{
+        bottom: 10px;
+        right: 10px;
+        height: 60px;
+        width: 60px;
+        font-size: 35px;
     }
 }
