@@ -13,53 +13,26 @@
 </nav>
 <main class="w-100 d-flex flex-column">
     <section class="d-flex content-page-options flex-column align-items-center">
-        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
-            <div class="list-item-content-image">
-                <img src="../../static/assets/images/Screenshot from 2022-06-01 14-46-58.png" alt="test">
+        <div class="w-100 d-flex list-item align-items-center flex-column">
+            <div class="d-flex w-100 align-items-center list-item-label">
+                <i class="bi bi-globe"></i>
+                <span> Nom </span>
             </div>
-            <div class="list-item-content-data d-flex flex-column justify-content-center">
-                <span> Un short text </span>
-                <p> a long text to describe the content </p>
-                <div class="list-item-button-container d-flex align-items-center">
-                    <button>
-                        <i class="bi bi-x-octagon-fill"></i>
-                        <span> SUPPRIMER </span>
-                    </button>
-                </div>
-            </div>
+            <p class="list-item-text"> nom de l'utilisateur </p>
         </div>
-        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
-            <div class="list-item-content-image d-flex justify-content-center align-items-center">
-                <div class="list-item-icon d-flex justify-content-center align-items-center">
-                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                </div>
+        <div class="w-100 d-flex list-item align-items-center flex-column">
+            <div class="d-flex w-100 align-items-center list-item-label">
+                <i class="bi bi-envelope-plus-fill"></i>
+                <span> Email </span>
             </div>
-            <div class="list-item-content-data d-flex flex-column justify-content-center">
-                <span> Un short text </span>
-                <p> a long text to describe the content </p>
-                <div class="list-item-button-container d-flex align-items-center">
-                    <button>
-                        <i class="bi bi-x-octagon-fill"></i>
-                        <span> SUPPRIMER </span>
-                    </button>
-                </div>
-            </div>
+            <p class="list-item-text"> email de l'utilisateur </p>
         </div>
-        <div class="w-100 d-flex list-item align-items-center flex-column flex-sm-row">
-            <div class="list-item-content-image d-flex justify-content-center align-items-center">
-                <div class="list-item-icon d-flex justify-content-center align-items-center">
-                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                </div>
+        <div class="w-100 d-flex list-item align-items-center flex-column">
+            <div class="d-flex w-100 align-items-center list-item-label">
+                <i class="bi bi-shield-lock-fill"></i>
+                <span> Mot de passe </span>
             </div>
-            <div class="list-item-content-data d-flex flex-column justify-content-center">
-                <span> Un short text </span>
-                <div class="list-item-button-container d-flex align-items-center">
-                    <button>
-                        <i class="bi bi-x-octagon-fill"></i>
-                        <span> SUPPRIMER </span>
-                    </button>
-                </div>
-            </div>
+            <p class="list-item-text"> Mot de passe de l'utilisateur </p>
         </div>
     </section>
 </main>

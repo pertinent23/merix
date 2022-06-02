@@ -3,7 +3,7 @@
         use App\modules\AppView\AppView;
         use App\modules\http\AppGlobal\AppGlobal;
 
-        class AppRouter{
+        abstract class AppRouter{
             /** 
                 *
                 * this field will content all

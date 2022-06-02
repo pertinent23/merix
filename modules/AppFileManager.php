@@ -2,7 +2,7 @@
     namespace App\modules\AppFileManager;
         use App\modules\http\AppEnv\AppEnv;
 
-        class AppFileManager{
+        abstract class AppFileManager{
             /** 
                 *
                 * this function will be use 

@@ -66,6 +66,7 @@
             'PARAMETRES',
             [ 
                 AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_settings' ),
                 AppPacker::addJSView( 'page/form.shema' ),
                 AppPacker::addJSView( 'page/form.shema.list' )
             ], 
@@ -213,5 +214,9 @@
 
     AppRouter::addRoute( 'api/files',  (
         AppPacker::view( 'api/files' )
+    ) );
+
+    AppRouter::addRoute( 'api/site',  (
+        AppPacker::view( 'api/site' )
     ) );
 ?>

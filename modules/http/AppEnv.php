@@ -4,7 +4,7 @@
         use App\modules\db\AppDataBase\DataBase;
         use App\modules\AppPacker\AppPacker;
 
-        class AppEnv{
+        abstract class AppEnv{
             /** 
                 *
                 * content the database

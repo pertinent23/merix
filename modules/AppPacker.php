@@ -5,7 +5,7 @@
         use App\modules\http\AppGlobal\AppGlobal as AppGlobal;
         use App\modules\AppFileManager\AppFileManager as AppFileManager;
 
-        class AppPacker{
+        abstract class AppPacker{
             const IMG_DEFAULT = [
                 'alt' => '',
                 'src' => ''

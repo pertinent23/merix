@@ -63,6 +63,34 @@
     }
 }
 
+.list-item .list-item-label{
+    padding: 15px 20px;
+    box-sizing: border-box;
+    color:  var( --purple );
+}
+
+.list-item .list-item-label i{
+    font-size: 27px;
+    margin-right: 10px;
+}
+
+.list-item .list-item-label span{
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+.list-item .list-item-text{
+    width: 100%;
+    padding: 0px 45px;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    font-size: 1.3em;
+    color: var(--davys-grey);
+    text-transform: uppercase;
+}
+
 .list-item .list-item-content-data span{
     font-size: 1.1em;
     text-transform: capitalize;

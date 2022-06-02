@@ -1,0 +1,80 @@
+.settings-item-container{
+    margin-top: 70px;
+    max-width: 1000px;
+    flex-wrap: wrap;
+}
+
+.settings-item{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.11);
+    height: 150px;
+    width: 100%;
+    max-width: 250px;
+    margin: 8px;
+}
+
+.settings-item button{
+    background-color: var(--purple);
+    color: var(--cultured);
+    border: none;
+    padding: 13px 20px;
+    font-size: 0.9em;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.11);
+    letter-spacing: 0.12em;
+    cursor: pointer;
+}
+
+.settings-item button i{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.settings-item .title{
+    font-size: 0.75em;
+    text-transform: uppercase;
+    left: 10px;
+    top: 10px;
+    font-weight: 600;
+    color: var(--light-gray);
+    position: absolute;
+    transition-duration: 0.2s;
+}
+
+.settings-item label{
+    height: 15px;
+    width: 40px;
+    border-radius: 45px;
+    border: 2px solid var(--light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.settings-item label span{
+    position: absolute;
+    display: block;
+    height: 25px;
+    width: 25px;
+    background-color: var(--light-gray);
+    border-radius: 100%;
+    left: -5px;
+    transition-duration: 0.2s;
+}
+
+.settings-item input:checked + label{
+    border-color: var(--purple);
+}
+
+.settings-item input:checked + label span{
+    background-color: var(--purple);
+    left: 60%;
+}
+
+.settings-item input:checked ~ .title{
+    color: var(--purple);
+}
