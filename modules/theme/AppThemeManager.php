@@ -24,5 +24,7 @@
             public static function isTheme() : bool {
                 return file_exists( 'configs.json' );
             }
+
+            abstract public static function getSite() : AppSite;
         }
 ?>
