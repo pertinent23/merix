@@ -1,10 +1,10 @@
 <?php 
     namespace App\modules\theme\types\AppEmployee;
         use App\modules\theme\types\AppTimeStamp\AppTimeStamp;
-        use App\modules\theme\types\AppFile\AppFile;
+        use App\modules\theme\types\AppFile\AppContentFile;
         use App\modules\theme\types\AppRole\AppRole;
 
-        interface AppEmployee extends AppTimeStamp, AppFile{
+        interface AppEmployee extends AppTimeStamp, AppContentFile{
             /** 
                 *
                 * return the id of the employee 

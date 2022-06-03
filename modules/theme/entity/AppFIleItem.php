@@ -2,8 +2,6 @@
     namespace App\modules\theme\entity\AppFileItem;
         use App\modules\theme\types\AppFile\AppFile;
         use App\modules\theme\types\AppFile\AppFileMap; 
-        use App\modules\theme\types\AppFile\AppContentFile;
-        use App\modules\theme\types\AppFile\AppContentFileList;
         use App\modules\theme\entity\AppTimeStampItem\AppTimeStampItem;
 
         class AppFileItem extends AppTimeStampItem implements AppFile{
@@ -63,27 +61,24 @@
             }
         }
 
-        class AppContentFileItem extends AppTimeStampItem implements AppContentFile{
+        trait AppContentFileItem{
             protected AppFileItem $file;
 
-            public function getFile(): AppFile
-            {
+            public function getFile(): AppFile{
                 return $this->file;
             }
         }
 
-        class AppContentFileListItem extends AppTimeStampItem implements AppContentFileList {
+        trait AppContentFileListItem{
             protected array $list = [];
             protected AppFileMap $map;
 
-            public function __construct( array $details )
-            {
+            protected function setFiles( array $details ) : void {
                 $this->list = $details;
                 $this->map = new AppFileMap( $details );
             }
 
-            public function getFileList(): AppFileMap
-            {
+            public function getFileList(): AppFileMap {
                 return $this->map;
             }
         }

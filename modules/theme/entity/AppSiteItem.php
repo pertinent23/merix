@@ -2,8 +2,10 @@
     namespace App\modules\theme\entity\AppSiteItem;
         use App\modules\theme\types\AppSite\AppSite;
         use App\modules\theme\entity\AppFileItem\AppContentFileItem;
+        use App\modules\theme\entity\AppTimeStampItem\AppTimeStampItem;
 
-        class AppSiteItem extends AppContentFileItem implements AppSite{
+        class AppSiteItem extends AppTimeStampItem implements AppSite{
+            use AppContentFileItem;
             private string $name;
             private string $slogan;
             private string $district;
@@ -78,18 +80,15 @@
                 return $this->position;
             }
 
-            public function getUserId(): int
-            {
+            public function getUserId(): int {
                 return $this->user_id;
             }
 
-            public function getFileId(): int
-            {
+            public function getFileId(): int{
                 return $this->file_id;
             }
 
-            public function getSiteId(): int
-            {
+            public function getSiteId(): int {
                 return $this->site_id;
             }
         }
