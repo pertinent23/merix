@@ -74,6 +74,9 @@
                     ) );
                     if ( $result instanceof AppView ) {
                         AppRouter::executeRoute( $result );
+                    } elseif ( $result === false ) {
+                        http_response_code( 404 );
+                        exit( 1 );
                     }
                 }
             }

@@ -1,3 +1,3 @@
 INSERT INTO 
-`USERS`(name, email, password, role, createAt, updatedAt)
-VALUES (:name, :email, :password, :role, :createAt, :updatedAt);
+`USERS`(name, email, password, role, createdAt, updatedAt)
+VALUES (:name, :email, :password, :role, :createdAt, :updatedAt);

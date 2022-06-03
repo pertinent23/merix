@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS USERS(
     password VARCHAR(300) NOT NULL,
     name VARCHAR(200) NOT NULL,
     role VARCHAR(10) NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(user_id)
 );
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS FILES(
     title VARCHAR(50) NOT NULL,
     description VARCHAR(400) NOT NULL,
     type VARCHAR(20),
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(file_id)
 );
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS THEMES(
     theme_id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     name VARCHAR(200) NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(theme_id),
     FOREIGN KEY(user_id) REFERENCES USERS(user_id)
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS SITES(
     country VARCHAR(200) NOT NULL,
     position VARCHAR(200) NOT NULL,
     history TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(site_id),
     FOREIGN KEY(user_id) REFERENCES USERS(user_id),
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS POSTS_TYPE(
     post_type_id INT NOT NULL AUTO_INCREMENT,
     site_id INT NOT NULL,
     label VARCHAR(200) NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(post_type_id),
     FOREIGN KEY(site_id) REFERENCES SITES(site_id)
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS POSTS(
     post_type_id INT NOT NULL,
     label VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(post_id),
     FOREIGN KEY(post_type_id) REFERENCES POSTS_TYPE(post_type_id)
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS ROLES(
     site_id INT NOT NULL,
     label VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(role_id),
     FOREIGN KEY(site_id) REFERENCES SITES(site_id)
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS EMPLOYEES(
     last_name VARCHAR(100) NOT NULL,
     age INT NOT NULL,
     background TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(employee_id),
     FOREIGN KEY(role_id) REFERENCES ROLES(role_id),
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS PLACES(
     site_id INT NOT NULL,
     name VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(place_id),
     FOREIGN KEY(site_id) REFERENCES SITES(site_id)
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS ACTIVITIES(
     site_id INT NOT NULL,
     name VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(activity_id),
     FOREIGN KEY(site_id) REFERENCES SITES(site_id)
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS PUBS(
     file_id INT NOT NULL,
     name VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(pub_id),
     FOREIGN KEY(site_id) REFERENCES SITES(site_id),
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS PROJECTS(
     file_id INT NOT NULL,
     name VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    createAt DATETIME NOT NUll,
+    createdAt DATETIME NOT NUll,
     updatedAt DATETIME NOT NUll,
     PRIMARY KEY(project_id),
     FOREIGN KEY(site_id) REFERENCES SITES(site_id),

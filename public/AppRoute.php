@@ -2,6 +2,7 @@
     namespace App\public\AppRoute;
         use App\modules\http\AppRouter\AppRouter;
         use App\modules\AppPacker\AppPacker;
+        use App\modules\http\AppGlobal\AppGlobal;
 
     function useRoot( string $title = 'MERIX', array $body = [], array $head = [], array $lazy = [] ) : callable {
         return fn() => (
@@ -216,7 +217,7 @@
         AppPacker::view( 'api/files' )
     ) );
 
-    AppRouter::addRoute( 'api/site',  (
+    AppRouter::addRoute( 'api/site', AppGlobal::useGet(
         AppPacker::view( 'api/site' )
     ) );
 ?>

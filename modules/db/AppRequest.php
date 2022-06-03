@@ -4,6 +4,7 @@
         use App\modules\AppFileManager\AppFileManager;
         use App\modules\AppPacker\AppPacker;
         use App\modules\http\AppEnv\AppEnv;
+        use PDO;
         use PDOStatement;
 
         class AppRequest{
@@ -67,7 +68,8 @@
             */
             public function exec() : AppRequest{
                 $sql = $this->load();
-                    $req = $this->db->getPDO()->prepare( $sql );
+                    $db = $this->db->getPDO();
+                    $req = $db->prepare( $sql );
                         $req->execute(
                             $this->args
                         );
@@ -108,6 +110,24 @@
             */
             public function getResult() : PDOStatement {
                 return $this->result;
+            }
+
+            /** 
+                *
+                * return the pdo 
+                * instance 
+            */
+            public function getPDO() : PDO{
+                return $this->db->getPDO();
+            }
+
+            /** 
+                *
+                * return the last id 
+                * insered in the table 
+            */
+            public function getLastId() : int {
+                return intval( $this->getPDO()->lastInsertId() );
             }
         }
 ?>
