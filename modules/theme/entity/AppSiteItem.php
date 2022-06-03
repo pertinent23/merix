@@ -34,6 +34,8 @@
                 $this->setHistory( $history );
                 $this->setPosition( $position );
                 $this->setDistrict( $district );
+                $this->setUserId( $user_id );
+                $this->setFileId( $file_id );
             }
 
             private function setUserId( int $val ) : void {
@@ -118,7 +120,7 @@
                     'updatedAt' => AppTimeStampItem::now()
                 ] );
                 $req->exec();
-                $this->file_id = $req->getLastId();
+                $this->site_id = $req->getLastId();
             }
 
             public function update(int $id): void

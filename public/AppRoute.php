@@ -225,7 +225,7 @@
         AppPacker::view( 'api/files' )
     ) );
 
-    AppRouter::addRoute( 'api/site', AppGlobal::useGet(
+    AppRouter::addRoute( 'api/site', AppGlobal::usePost(
         AppPacker::view( 'api/site' )
     ) );
 ?>

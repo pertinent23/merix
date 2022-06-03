@@ -1,6 +1,4 @@
-( shema => {
-    'use strict';
-    
+( ( { shema, tools }  ) => {
     shema.addShema( 'signUp', (
         shema
             .createFormShema( 'api/user/registration', 'POST' )
@@ -48,7 +46,7 @@
 
     shema.addShema( 'sites', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/site', 'POST' )
             .setTitle( 'SITE' )
             .setSubTitle( 'CREER UN NOUVEAU SITE' )
             .setSubmit( 'CREER', 'cloud-plus-fill' )
@@ -68,7 +66,7 @@
                 label: 'Pays',
                 icon: 'globe2'
             } )
-            .addInput( 'disctrict', 'text', {
+            .addInput( 'district', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Commune',
                 icon: 'geo-fill'
@@ -84,6 +82,7 @@
                 icon: 'book-half'
             } )
             .addImg( 'picture' )
+            .addData( 'user_id', tools.getStorageData( 'user' ).user_id )
             .toJSON()
     ) );
 
@@ -371,4 +370,4 @@
             } )
         .toJSON()
     ) );
-} )( window.shema );
+} )( window );

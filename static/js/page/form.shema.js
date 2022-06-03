@@ -167,6 +167,7 @@
     */
     shema.FormShema = function ( action, method ) {
         const fields = {};
+        const utils = {};
         let 
             id = 0,
             submit = undefined,
@@ -360,6 +361,21 @@
 
         /**
             * 
+            * @param {String} key 
+            * @param {String} value 
+            * @returns {shema.FormShema}
+            * *
+            * this function will be use 
+            * to set an usefull value 
+            * to the manager
+        */
+        this.addData = function ( key, value ) {
+                utils[ key ] = value;
+            return this;
+        };
+
+        /**
+            * 
             * @param {String} name 
             * @param {Boolean} multiple 
             * @param {String} ext 
@@ -473,7 +489,8 @@
                     method,
                     action,
                     title,
-                    subtitle
+                    subtitle,
+                    utils
                 };
 
                 if ( submit ) {

@@ -29,7 +29,9 @@
         e.preventDefault();
         const 
             form = e.target,
-            result = {};
+            result = {
+                ...meta.utils
+            };
             items = Array.from( form.elements );
         for ( const id in items ) {
             const 
@@ -51,7 +53,11 @@
                 } ).then( result => {
                     return service.send( result.json() );
                 } ).catch( err => {
-                    return builder.setError( err.text() );
+                    try {
+                        return builder.setError( err.json().msg );
+                    } catch( e ) {
+                        return builder.setError( err.text() );
+                    }
                 } ).send();
             } else {
                 const 

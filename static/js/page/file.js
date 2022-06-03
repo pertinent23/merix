@@ -78,24 +78,38 @@
             return tools.request( {
                 url: 'api/files',
                 method: 'POST',
-                data: list
+                data: {
+                    ...list,
+                    title: prompt( 'Entrer le titre de vo(s) image(s)', 'My image' ),
+                    description: prompt( 'Enter description of your image', 'a short description' )
+                }
             } ).then( result => {
                 const 
                     final = {
                         ...meta.data
                     };
-                    final[ needed.name ] = result.json();
+                    final[ needed.name ] = result;
+                    console.log( final );
                 return tools.request( {
                     url: meta.action,
                     method: meta.method || 'POST',
                     data: final
                 } ).then( result => {
+                    console.log( result );
                     return service.send( result.json() );
                 } ).catch( err => {
-                    return builder.setError( err.text() );
+                    try{
+                        files.setError( err.json().msg );
+                    } catch( e ) {
+                        files.setError( err.text() );
+                    }
                 } ).send();
             } ).catch( err => {
-                return files.setError( err.text() );
+                try{
+                    files.setError( err.json().msg );
+                } catch( e ) {
+                    files.setError( err.text() );
+                }
             } ).send();
         } else {
             files.setError( 'None file selected' );

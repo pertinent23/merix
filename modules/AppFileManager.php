@@ -106,7 +106,7 @@
             */
             public static function getUploadPath( string $name = '' ) : string {
                 if ( AppFileManager::verifyUploadsExist() ) {
-                    return AppEnv::getServerLink().constant( 'uploads' ) . "$name";
+                    return constant( 'uploads' ) . "$name";
                 }
                 return '';
             }

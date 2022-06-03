@@ -33,10 +33,10 @@
             */
             public static function uploadFile( string $key ) : bool | string {
                 $infos = self::getFileInfos( $key );
-                $name = strval( AppTimeStampItem::now() ).$infos[ 'name' ].$infos[ 'ext' ];
+                $name = strval( strtotime( AppTimeStampItem::now() ) ). '.' .$infos[ 'name' ];
                 $path = AppFileManager::getUploadPath( $name );
                 $result = move_uploaded_file( $infos[ 'tmp_name' ],  $path );
-                chmod( $path, 777 );
+                chmod( $path, 0777 );
                 if ( $result ) {
                     return $path;
                 }
@@ -52,10 +52,10 @@
                 $result = [ ];
                     if ( self::fileSent( $key ) ) {
                         $data = $_FILES[ $key ];
-                        foreach( $data as $key => $value ) 
-                            $result[ $key ] = $value;
+                        foreach( $data as $name => $value ) 
+                            $result[ $name ] = $value;
                         $infos = pathinfo( $data[ 'name' ] );
-                        $data[ 'ext' ] = $infos[ 'extension' ];
+                        $result[ 'ext' ] = $infos[ 'extension' ];
                     }
                 return $result;
             }

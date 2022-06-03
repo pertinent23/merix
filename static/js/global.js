@@ -666,7 +666,9 @@
             xhr.open( data.method, tools.getService( data.url ) );
 
             for( const name in entries ) {
-                form.append( name, entries[ name ] );
+                const 
+                    data = entries[ name ];
+                form.append( name, ( typeof data === 'object' && !( data instanceof File ) ) ? JSON.parse( data ) : data );
             }
 
             for( const hn in headers ) {
@@ -799,11 +801,30 @@
         * this function will be use to manage
         * file service
     */
-     tools.fileService = function ( data = {}, detail = {} ) {
+    tools.fileService = function ( data = {}, detail = {} ) {
         if ( typeof data !== 'object' || typeof detail !== 'object' )
             throw new Error( 'fileService params should be objects' );
         return tools.subscribeService( tools.getService( '_/_/file' ), data, detail );
     };
+
+    /**
+        * 
+        * @param {String} key 
+        * @returns {Object}
+        * * 
+        * this function will 
+        * transform a test map data to
+        * JSON
+    */
+    tools.getStorageData =  function ( key ) {
+        const 
+            data = localStorage.getItem( key );
+        try{
+            return JSON.parse( data );
+        } catch( e ) {
+            return {};
+        }
+    }
     
     wn.tools = tools;
 } )( window );
