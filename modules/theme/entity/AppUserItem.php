@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppUserItem;
+        use PDO;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppUser\AppUser;
@@ -69,16 +70,17 @@
                     'updatedAt' => AppTimeStampItem::now()
                 ] );
                 $req->exec();
+                $this->setUserId( $req->getLastId() );
             }
 
-            public static function login( string $email, string $password ) : bool {
+            public static function login( string $email, string $password ) : array|bool {
                 $req = new AppRequest( 'user.login', [
                     'email' => $email,
                     'password' => sha1( $password )
                 ] );
                 $result = $req->exec()->getResult();
-                $count = $result->fetchColumn();
-                return $count === 1;
+                $data = $result->fetch( PDO::FETCH_ASSOC );
+                return $data;
             }
 
             public function update( int $id ): void {

@@ -209,6 +209,14 @@
         )
     ) );
 
+    AppRouter::addRoute( 'api/user/registration',  AppGlobal::usePost(
+        AppPacker::view( 'api/registration' )
+    ) );
+
+    AppRouter::addRoute( 'api/user/login',  AppGlobal::usePost(
+        AppPacker::view( 'api/login' )
+    ) );
+
     AppRouter::addRoute( 'api/user/registration',  (
         AppPacker::view( 'api/registration' )
     ) );

@@ -92,6 +92,27 @@
 
             /** 
                 *
+                * return true if the uploads
+                * global key exist 
+            */
+            public static function verifyUploadsExist() : bool {
+                return defined( 'uploads' );
+            }
+
+            /** 
+                *
+                * return the path to a
+                * upload file path 
+            */
+            public static function getUploadPath( string $name = '' ) : string {
+                if ( AppFileManager::verifyUploadsExist() ) {
+                    return AppEnv::getServerLink().constant( 'uploads' ) . "$name";
+                }
+                return '';
+            }
+
+            /** 
+                *
                 * return the path to a
                 * static file 
             */

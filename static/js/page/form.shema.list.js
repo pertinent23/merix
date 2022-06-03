@@ -28,7 +28,7 @@
 
     shema.addShema( 'signIn', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/user/login', 'POST' )
             .setTitle( 'CONNECTION' )
             .setSubTitle( 'CONNECTEZ-VOUS A VOTRE COMPTE POUR ADMINISTRER VOS SITES' )
             .setSubmit( 'JE ME CONNECTE', 'person-circle' )
@@ -58,11 +58,6 @@
                 label: 'Nom',
                 icon: 'file-earmark-person'
             } )
-            .addInput( 'name', 'text', {
-                validators: [ 'required', [ 'minlen', 3 ] ],
-                label: 'Nom',
-                icon: 'bookmark-check-fill'
-            } )
             .addInput( 'slogan', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Slogan',
@@ -73,7 +68,7 @@
                 label: 'Pays',
                 icon: 'globe2'
             } )
-            .addInput( 'Disctrict', 'text', {
+            .addInput( 'disctrict', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Commune',
                 icon: 'geo-fill'

@@ -27,6 +27,15 @@
                 }
             }
 
+            public static function setStatus( int $code ) : void {
+                http_response_code( $code );
+            }
+
+            public static function responseJson( array $list ) : void {
+                echo json_encode( $list );
+                die();
+            }
+
             public static function useMethod( string $method, mixed $data ) : callable {
                 return function ( AppGlobal $app ) use( $method, $data ) {
                     if ( $app->isMethod( $method ) ) {

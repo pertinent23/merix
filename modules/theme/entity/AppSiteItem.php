@@ -1,10 +1,12 @@
 <?php 
     namespace App\modules\theme\entity\AppSiteItem;
+        use App\modules\theme\AppCRUD\AppCRUD;
+        use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppSite\AppSite;
         use App\modules\theme\entity\AppFileItem\AppContentFileItem;
         use App\modules\theme\entity\AppTimeStampItem\AppTimeStampItem;
 
-        class AppSiteItem extends AppTimeStampItem implements AppSite{
+        class AppSiteItem extends AppTimeStampItem implements AppSite, AppCRUD{
             use AppContentFileItem;
             private string $name;
             private string $slogan;
@@ -17,6 +19,8 @@
             private int $site_id;
 
             public function __construct( 
+                int $user_id,
+                int $file_id,
                 string $name, 
                 string $slogan, 
                 string $district,
@@ -30,6 +34,14 @@
                 $this->setHistory( $history );
                 $this->setPosition( $position );
                 $this->setDistrict( $district );
+            }
+
+            private function setUserId( int $val ) : void {
+                $this->user_id = $val;
+            }
+
+            private function setFileId( int $val ) : void {
+                $this->file_id = $val;
             }
 
             private function setName( string $val ) : void {
@@ -90,6 +102,43 @@
 
             public function getSiteId(): int {
                 return $this->site_id;
+            }
+
+            public function create(): void {
+                $req = new AppRequest( 'site.insert', [
+                    'user_id' => $this->getUserId(),
+                    'file_id' => $this->getFileId(),
+                    'name' => $this->getName(),
+                    'slogan' => $this->getSlogan(),
+                    'history' => $this->getHistory(),
+                    'position' => $this->getPosition(),
+                    'district' => $this->getDistrict(),
+                    'country' => $this->getCountry(),
+                    'createdAt' => AppTimeStampItem::now(),
+                    'updatedAt' => AppTimeStampItem::now()
+                ] );
+                $req->exec();
+                $this->file_id = $req->getLastId();
+            }
+
+            public function update(int $id): void
+            {
+                
+            }
+
+            public static function gets(): array
+            {
+                return [];
+            }
+
+            public static function get(int $id): mixed
+            {
+                
+            }
+
+            public static function delete(int $id): bool
+            {
+                return true;
             }
         }
 ?>

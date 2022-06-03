@@ -14,6 +14,15 @@
 
             /** 
                 *
+                * this will return the root email
+                * of the website 
+            */
+            public static function getRootEmail() {
+                return 'admin@root.app';
+            }
+
+            /** 
+                *
                 * this function will test
                 * if we are on a developpment environnement 
             */
