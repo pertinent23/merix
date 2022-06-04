@@ -53,45 +53,43 @@
             public function getFile() : AppFile;
         }
 
-        class AppFileMap implements Iterator{
-            protected array $map = [];
-            protected int $id = 1;
-            protected AppFile $item;
+        interface AppFileMap extends Iterator{
 
-            public function __construct( array $list = [] ) {
-                foreach( $list as $item ) {
-                    if ( $item instanceof Iterator ) {
-                        array_push( $this->map, $item );
-                    }
-                }
-            }
+            public function __construct( array $list = [] );
 
-            public function valid() : bool{
-                if ( $this->id === count( $this->map ) ) {
-                    return false;
-                }
-                return true;
-            }
+            /** 
+                *
+                * will check if there is 
+                * enough value in the map 
+            */
+            public function valid() : bool;
 
-            public function rewind() : void {
-                $this->id = 1;
-                $this->item = $this->map[ 0 ];
-            }
+            /** 
+                *
+                * will restart the key
+                * cursor 
+            */
+            public function rewind() : void;
 
-            public function key() : int {
-                return $this->id - 1;
-            }
+            /** 
+                *
+                * will return the current 
+                * key 
+            */
+            public function key() : int;
 
-            public function current() : AppFile {
-                return $this->item;
-            }
+            /** 
+                *
+                * will return the current 
+                * item 
+            */
+            public function current() : AppFile;
 
-            public function next() : void {
-                if ( $this->valid() ) {
-                        $this->item = $this->map[ $this->i - 1 ];
-                    $this->i++;
-                }
-            }
+            /** 
+                *
+                * will go to the next item 
+            */
+            public function next() : void;
         }
 
         interface AppContentFileList{

@@ -1,17 +1,18 @@
 <?php 
     namespace App\modules\theme\entity\AppEmployeeItem;
+        use App\modules\theme\AppCRUD\AppCRUD;
+        use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppEmployee\AppEmployee;
         use App\modules\theme\entity\AppTimeStampItem\AppTimeStampItem;
         use App\modules\theme\types\AppRole\AppRole;
         use App\modules\theme\entity\AppFileItem\AppContentFileItem;
         use App\modules\theme\entity\AppRoleItem\AppRoleItem;
 
-        class AppEmployeeItem extends AppTimeStampItem implements AppEmployee{
+        class AppEmployeeItem extends AppTimeStampItem implements AppEmployee, AppCRUD{
             use AppContentFileItem;
             protected int $employee_id;
             protected int $role_id;
             protected string $background;
-            protected string $description;
             protected string $first_name;
             protected string $last_name;
             protected int $age;
@@ -20,18 +21,20 @@
                 int $role_id,
                 int $file_id,
                 string $background,
-                string $description,
                 string $first_name,
                 string $last_name,
                 int $age   
             ) {
                $this->setRoleId( $role_id ); 
                $this->setFileId( $file_id );
-               $this->setDescription( $description );
                $this->setBackground( $background );
                $this->setFirstName( $first_name );
                $this->setLastName( $last_name );
                $this->setAge( $age );
+            }
+
+            protected function setEmployeeId( int $val ) : void {
+                $this->employee_id = $val;
             }
 
             protected function setRoleId( int $val ) : void {
@@ -40,10 +43,6 @@
 
             protected function setAge( int $val ) : void {
                 $this->age = $val;
-            }
-
-            protected function setDescription( string $val ) : void {
-                $this->description = $val;
             }
 
             protected function setFirstName( string $val ) : void {
@@ -66,10 +65,6 @@
                 return $this->age;
             }
 
-            public function getDescription(): string {
-                return $this->description;   
-            }
-
             public function getEmployeeId(): int {
                 return $this->employee_id;                
             }
@@ -83,11 +78,43 @@
             }
 
             public function getRole(): AppRole {
-                return new AppRoleItem( '', '' );
+                return new AppRoleItem( 1, '', '' );
             }
 
             public function getRoleId(): int {
-                return $this->file_id;
+                return $this->role_id;
+            }
+
+            public function create(): void {
+                $req = new AppRequest( 'employee.insert', [
+                    'role_id' => $this->getRoleId(),
+                    'file_id' => $this->getFileId(),
+                    'first_name' => $this->getFirstName(),
+                    'last_name' => $this->getLastName(),
+                    'background' => $this->getBackground(),
+                    'age' => $this->getAge(),
+                    'createdAt' => AppTimeStampItem::now(),
+                    'updatedAt' => AppTimeStampItem::now(),
+                ] );
+
+                $req->exec();
+                $this->setEmployeeId( $req->getLastId() );
+            }
+
+            public function update(int $id): void {
+                
+            }
+
+            public static function get(int $id): mixed {
+                
+            }
+
+            public static function gets(int $user_id): array {
+                return [];
+            }
+
+            public static function delete(int $id): bool {
+                return true;
             }
         }
 ?>

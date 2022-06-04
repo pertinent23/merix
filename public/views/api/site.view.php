@@ -31,7 +31,7 @@
             AppGlobal::responseJson( [
                 'site_id' => $site->getSiteId(),
                 'name' => $name,
-                'slogan' => $district,
+                'slogan' => $slogan,
                 'history' => $history,
                 'country' => $country,
                 'position' => $position,

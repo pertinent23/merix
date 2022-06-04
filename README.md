@@ -5,7 +5,7 @@ A Content Management System (CMS) to create municipality web site
 - wedding
 - death
 - birth
-- devorce
+- divorce
 - other
 
 # LIST OF ROLE

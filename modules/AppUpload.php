@@ -36,8 +36,9 @@
                 $name = strval( strtotime( AppTimeStampItem::now() ) ). '.' .$infos[ 'name' ];
                 $path = AppFileManager::getUploadPath( $name );
                 $result = move_uploaded_file( $infos[ 'tmp_name' ],  $path );
-                chmod( $path, 0777 );
                 if ( $result ) {
+                    chmod( $path, 0777 );
+                    sleep( 0.15 );
                     return $path;
                 }
                 return $result;

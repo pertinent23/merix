@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppFileItem;
+        use FFI\Exception;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppFile\AppFile;
@@ -121,13 +122,81 @@
             }
         }
 
+        class AppFileMapItem implements AppFileMap{
+            protected array $map = [];
+            protected int $id = 1;
+            protected AppFile $item;
+
+            public function __construct( array $list = [] ) {
+                foreach( $list as $item ) {
+                    if ( $item instanceof AppFileItem ) {
+                        array_push( $this->map, $item );
+                    } elseif ( is_int( $item ) ) {
+                        $req = new AppRequest( 'file.item', [
+                            'file_id' => $item
+                        ] );
+                        $result = $req->exec()->getResult()->fetch();
+                        array_push( $this->map, new AppFileItem(
+                            $result[ 'url' ],
+                            $result[ 'title' ],
+                            $result[ 'description' ],
+                            $result[ 'type' ]
+                        ) );
+                        sleep( 0.1 );
+                    }
+                }
+            }
+
+            public function valid() : bool{
+                if ( $this->id === count( $this->map ) ) {
+                    return false;
+                }
+                return true;
+            }
+
+            public function rewind() : void {
+                $this->id = 1;
+                $this->item = $this->map[ 0 ];
+            }
+
+            public function key() : int {
+                return $this->id - 1;
+            }
+
+            public function current() : AppFile {
+                return $this->item;
+            }
+
+            public function next() : void {
+                if ( $this->valid() ) {
+                        $this->item = $this->map[ $this->i - 1 ];
+                    $this->i++;
+                }
+            }
+        }
+
         trait AppContentFileListItem{
             protected array $list = [];
             protected AppFileMap $map;
 
-            protected function setFiles( array $details ) : void {
+            public function setFiles( array $details ) : void {
+                $details = array_filter( $details, function ( $item ) {
+                    try{
+                        intval( $item );
+                        return true;
+                    } catch( Exception $e ) {
+                        return false;
+                    }
+                } );
+
                 $this->list = $details;
-                $this->map = new AppFileMap( $details );
+                $this->map = new AppFileMapItem(
+                    array_map( fn( $i ) => intval( $i ), $details )
+                );
+            }
+
+            public function getFileIdList() : array {
+                return $this->list;
             }
 
             public function getFileList(): AppFileMap {

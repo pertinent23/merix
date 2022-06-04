@@ -23,6 +23,9 @@
                 <a data-fx="site" class="page-option-action d-flex justify-content-center align-items-center">
                     <i class="bi bi-arrow-repeat"></i>
                 </a>
+                <a href="list/site" class="page-option-action d-flex justify-content-center align-items-center">
+                    <i class="bi bi-infinity"></i>
+                </a>
             </div>
             <p class="page-option-description">
                 Modifier les informations de la mairie

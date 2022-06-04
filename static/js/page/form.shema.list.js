@@ -133,7 +133,7 @@
 
     shema.addShema( 'add-project', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/project', 'POST' )
             .setTitle( 'PROJETS' )
             .setSubTitle( 'AJOUTER UN NOUVEAU PROJET' )
             .setSubmit( 'AJOUTER', 'patch-plus-fill' )
@@ -148,13 +148,14 @@
                 label: 'Description',
                 icon: 'book-half'
             } )
+            .addData( 'site_id', tools.urls().get( 's' ) )
             .addImg( 'picture' )
         .toJSON()
     ) );
 
     shema.addShema( 'add-pub', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/pub', 'POST' )
             .setTitle( 'PUBLICITE' )
             .setSubTitle( 'AJOUTER UNE NOUVELLE PUBLICITE' )
             .setSubmit( 'AJOUTER', 'patch-plus-fill' )
@@ -169,13 +170,14 @@
                 label: 'Description',
                 icon: 'book-half'
             } )
+            .addData( 'site_id', tools.urls().get( 's' ) )
             .addImg( 'picture' )
         .toJSON()
     ) );
 
     shema.addShema( 'add-place', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/place', 'POST' )
             .setTitle( 'TOURISME' )
             .setSubTitle( 'AJOUTER UN NOUVEAU SITE TOURISTIQUE' )
             .setSubmit( 'AJOUTER', 'patch-plus-fill' )
@@ -190,17 +192,19 @@
                 label: 'Description',
                 icon: 'book-half'
             } )
+            .addData( 'site_id', tools.urls().get( 's' ) )
             .addImg( 'picture', true )
         .toJSON()
     ) );
 
     shema.addShema( 'add-post-type', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/posttype', 'POST' )
             .setTitle( 'ANNONCES' )
             .setSubTitle( 'AJOUTER UN TYPE D\'ANNONCES' )
             .setSubmit( 'AJOUTER', 'patch-plus-fill' )
             .setCancel( 'ANNULER' )
+            .addData( 'site_id', tools.urls().get( 's' ) )
             .addSelect( 'label', [
                 { id: 'wedding', value: 'Mariage' },
                 { id: 'death', value: 'Décès' },
@@ -216,20 +220,14 @@
         .toJSON()
     ) );
 
-    shema.addShema( 'add-post', function () {
+    shema.addShema( 'add-post', function ( list ) {
         return shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/post', 'POST' )
             .setTitle( 'ANNONCES' )
             .setSubTitle( 'CREER UNE ANNONCE' )
             .setSubmit( 'CREER', 'patch-plus-fill' )
             .setCancel( 'ANNULER' )
-            .addSelect( 'type', [
-                { id: 'wedding', value: 'Mariage' },
-                { id: 'death', value: 'Décès' },
-                { id: 'birth', value: 'Naissance' },
-                { id: 'divorce', value: 'Divorce' },
-                { id: 'other', value: 'Autre' },
-            ], {
+            .addSelect( 'post_type_id', list, {
                 validators: [ 'required' ],
                 label: 'TYPE D\'ANNONCE',
                 icon: 'lightning-charge-fill',
@@ -251,7 +249,7 @@
 
     shema.addShema( 'add-activity', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/activity', 'POST' )
             .setTitle( 'ACTIVITES' )
             .setSubTitle( 'AJOUTER UNE NOUVELLE ACTIVITE' )
             .setSubmit( 'AJOUTER', 'tags-fill' )
@@ -266,17 +264,19 @@
                 label: 'Description',
                 icon: 'book-half'
             } )
+            .addData( 'site_id', tools.urls().get( 's' ) )
             .addImg( 'picture', true )
         .toJSON()
     ) );
 
     shema.addShema( 'add-role', (
         shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/role', 'POST' )
             .setTitle( 'TYPES' )
-            .setSubTitle( 'AJOUTER UN TYPE DE POSTE' )
+            .setSubTitle( 'AJOUTER UN POSTE' )
             .setSubmit( 'AJOUTER', 'patch-plus-fill' )
             .setCancel( 'ANNULER' )
+            .addData( 'site_id', tools.urls().get( 's' ) )
             .addSelect( 'label', [
                 { id: 'mayor', value: 'Maire' },
                 { id: 'deputy-mayor', value: 'Adjoint du Maire' },
@@ -287,22 +287,22 @@
                 label: 'TYPE DE POSTE',
                 icon: 'cursor-text'
             } )
+            .addInput( 'description', 'textarea', {
+                validators: [ 'required', [ 'minlen', 3 ] ],
+                label: 'Nom:',
+                icon: 'book-half'
+            } )
         .toJSON()
     ) );
 
-    shema.addShema( 'add-employee', function () {
+    shema.addShema( 'add-employee', function ( list ) {
         return shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/employee', 'POST' )
             .setTitle( 'EMPLOYES' )
             .setSubTitle( 'AJOUTER UN NOUVEL EMPLOYE' )
             .setSubmit( 'AJOUTER', 'person-plus-fill' )
             .setCancel( 'ANNULER' )
-            .addSelect( 'type', [
-                { id: 'mayor', value: 'Maire' },
-                { id: 'deputy-mayor', value: 'Adjoint du Maire' },
-                { id: 'secretary', value: 'Sécrétaire' },
-                { id: 'other', value: 'Autre' },
-            ], {
+            .addSelect( 'role_id', list, {
                 validators: [ 'required' ],
                 label: 'POSTE OCCUPE',
                 icon: 'cursor-text'

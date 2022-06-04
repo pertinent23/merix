@@ -75,6 +75,7 @@
 
     tools.addEvent( '#finish-service', 'click', () => {
         if ( getListFile().length ) {
+            console.log( list );
             return tools.request( {
                 url: 'api/files',
                 method: 'POST',
@@ -98,6 +99,7 @@
                     console.log( result );
                     return service.send( result.json() );
                 } ).catch( err => {
+                    console.log( err.text() );
                     try{
                         files.setError( err.json().msg );
                     } catch( e ) {

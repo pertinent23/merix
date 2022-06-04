@@ -170,13 +170,25 @@
 
     AppRouter::addRoute( 'account/list/infos',  (
         useRoot(
-            'MERIX',
+            'MES INFORMATIONS',
             [ 
                 AppPacker::addCSSView( '_account' ),
                 AppPacker::addCSSView( '_sites' ), 
                 AppPacker::addCSSView( '_list' )
             ],
             [ AppPacker::view( 'list/infos' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'account/list/site',  (
+        useRoot(
+            'MERIX',
+            [ 
+                AppPacker::addCSSView( '_account' ),
+                AppPacker::addCSSView( '_sites' ), 
+                AppPacker::addCSSView( '_list' )
+            ],
+            [ AppPacker::view( 'list/site' ) ]
         )
     ) );
 
@@ -227,5 +239,45 @@
 
     AppRouter::addRoute( 'api/site', AppGlobal::usePost(
         AppPacker::view( 'api/site' )
+    ) );
+
+    AppRouter::addRoute( 'api/project', AppGlobal::usePost(
+        AppPacker::view( 'api/project' )
+    ) );
+
+    AppRouter::addRoute( 'api/pub', AppGlobal::usePost(
+        AppPacker::view( 'api/pub' )
+    ) );
+
+    AppRouter::addRoute( 'api/place', AppGlobal::usePost(
+        AppPacker::view( 'api/place' )
+    ) );
+
+    AppRouter::addRoute( 'api/activity', AppGlobal::usePost(
+        AppPacker::view( 'api/activity' )
+    ) );
+
+    AppRouter::addRoute( 'api/posttype', AppGlobal::usePost(
+        AppPacker::view( 'api/posttype' )
+    ) );
+
+    AppRouter::addRoute( 'api/posttype/get', AppGlobal::usePost(
+        AppPacker::view( 'api/posttype.get' )
+    ) );
+
+    AppRouter::addRoute( 'api/post', AppGlobal::usePost(
+        AppPacker::view( 'api/post' )
+    ) );
+
+    AppRouter::addRoute( 'api/role', AppGlobal::usePost(
+        AppPacker::view( 'api/role' )
+    ) );
+
+    AppRouter::addRoute( 'api/role/get', AppGlobal::usePost(
+        AppPacker::view( 'api/role.get' )
+    ) );
+
+    AppRouter::addRoute( 'api/employee', AppGlobal::usePost(
+        AppPacker::view( 'api/employee' )
     ) );
 ?>

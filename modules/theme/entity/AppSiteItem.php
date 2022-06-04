@@ -141,6 +141,8 @@
                         $item[ 'position' ]
                     );
                     $site->setSiteId( intval( $item[ 'site_id' ] ) );
+                    $site->setCreatedDate( $item[ 'createdAt' ] );
+                    $site->setUpdatedDate( $item[ 'updatedAt' ] );
                     return $site;
                 }, $result );
             }
