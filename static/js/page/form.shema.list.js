@@ -82,7 +82,7 @@
                 icon: 'book-half'
             } )
             .addImg( 'picture' )
-            .addData( 'user_id', tools.getStorageData( 'user' ).user_id )
+            .addData( 'user_id', ( tools.getStorageData( 'user' ) || {} ).user_id )
             .toJSON()
     ) );
 

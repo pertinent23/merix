@@ -1,1 +1,1 @@
-SELECT * FROM `SITES` WHERE user_id = :user_id;
+SELECT * FROM `SITES` WHERE user_id = :user_id ORDER BY site_id DESC;

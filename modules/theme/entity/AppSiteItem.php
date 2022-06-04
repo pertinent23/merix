@@ -105,7 +105,7 @@
             }
 
             public function create(): void {
-                $req = new AppRequest( 'site.update', [
+                $req = new AppRequest( 'site.insert', [
                     'user_id' => $this->getUserId(),
                     'file_id' => $this->getFileId(),
                     'name' => $this->getName(),

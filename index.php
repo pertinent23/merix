@@ -20,6 +20,16 @@
         * route manager 
     */
     AppPacker::startRoutes();
+
+    /** 
+        *
+        * to allow origin of request
+        * to acces to the cms 
+    */
+    AppGlobal::header( 'Access-Control-Allow-Origin', implode( ', ', [
+        'http://localhost', 
+        'http://127.0.0.1'
+    ] ) );
     
     /** 
         *

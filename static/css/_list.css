@@ -124,6 +124,11 @@
     -webkit-box-orient: vertical;
 }
 
+.list-item a.list-item-link{
+    text-transform: uppercase;
+    color: var( --purple );
+}
+
 .list-item .list-item-button-container{
     margin: 0px;
     margin-bottom: 7px;

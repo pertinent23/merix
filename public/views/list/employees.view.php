@@ -30,6 +30,10 @@ use App\modules\http\AppGlobal\AppGlobal;
                     'item' => $item
                 ] );
             }
+
+            if ( !count( $list ) ) {
+                AppPacker::render( 'items/notfound.item' );
+            }
         ?>
     </section>
 </main>
