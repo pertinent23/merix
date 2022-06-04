@@ -1,0 +1,4 @@
+SELECT FILES.* FROM `ACTIVITIES_FILES`
+RIGHT JOIN `FILES`
+ON FILES.file_id = ACTIVITIES_FILES.file_id
+WHERE activity_id = :activity_id;

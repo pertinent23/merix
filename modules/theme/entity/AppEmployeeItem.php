@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppEmployeeItem;
+        use PDO;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppEmployee\AppEmployee;
@@ -78,7 +79,7 @@
             }
 
             public function getRole(): AppRole {
-                return new AppRoleItem( 1, '', '' );
+                return AppRoleItem::get( $this->getRoleId() );
             }
 
             public function getRoleId(): int {
@@ -109,8 +110,26 @@
                 
             }
 
-            public static function gets(int $user_id): array {
-                return [];
+            public static function gets(int $id): array {
+                $req = new AppRequest( 'employee.list', [
+                    'site_id' => $id
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                return array_map( function ( $item ) {
+                    $site = new AppEmployeeItem(
+                        $item[ 'role_id' ],
+                        $item[ 'file_id' ],
+                        $item[ 'background' ],
+                        $item[ 'first_name' ],
+                        $item[ 'last_name' ],
+                        $item[ 'age' ]
+                    );
+                    $site->setEmployeeId( intval( $item[ 'employee_id' ] ) );
+                    $site->setCreatedDate( $item[ 'createdAt' ] );
+                    $site->setUpdatedDate( $item[ 'updatedAt' ] );
+                    return $site;
+                }, $result );
             }
 
             public static function delete(int $id): bool {

@@ -40,12 +40,28 @@
                 $this->setRoleId( $req->getLastId() );
             }
 
-            public function update(int $id): void {
+            public function update(): void {
                 
             }
 
             public static function get(int $id): mixed {
-                
+                $req = new AppRequest( 'role.get', [
+                    'role_id' => $id,
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetch( PDO::FETCH_ASSOC );
+                if ( $result ) {
+                    $data = new AppRoleItem(
+                        $result[ 'site_id' ],
+                        $result[ 'label' ],
+                        $result[ 'description' ]
+                    );
+                    $data->setRoleId( intval( $result[ 'role_id' ] ) );
+                    $data->setCreatedDate( $result[ 'createdAt' ] );
+                    $data->setCreatedDate( $result[ 'updatedAt' ] );
+                    return $data;
+                }
+                return false;   
             }
 
             public static function gets(int $site_id): array {

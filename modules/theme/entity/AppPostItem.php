@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppPostItem;
+        use PDO;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppPost\AppPost;
@@ -87,8 +88,31 @@
                 
             }
 
-            public static function gets(int $user_id): array {
-                return [];
+            public static function gets(int $id): array {
+                $req = new AppRequest( 'post.list', [
+                    'site_id' => $id
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                return array_map( function ( $item ) {
+                    $site = new AppPostItem(
+                        $item[ 'label' ],
+                        $item[ 'description' ],
+                        $item[ 'post_type_id' ]
+                    );
+                    $site->setPostId( intval( $item[ 'post_id' ] ) );
+                    $site->setCreatedDate( $item[ 'createdAt' ] );
+                    $site->setUpdatedDate( $item[ 'updatedAt' ] );
+                        $req = new AppRequest( 'post.list.files', [
+                            'post_id' => $site->getPostId()
+                        ] );
+                        $req->exec();
+                        $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                        $site->setFiles( array_map( function ( $item ) {
+                            return intval( $item[ 'file_id' ] );
+                        } , $result ) );
+                    return $site;
+                }, $result );
             }
 
             public static function delete(int $id): bool {

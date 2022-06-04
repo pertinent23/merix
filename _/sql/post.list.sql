@@ -1,0 +1,5 @@
+SELECT POSTS.* FROM `POSTS_TYPE`
+RIGHT JOIN `POSTS`
+ON POSTS.post_type_id = POSTS_TYPE.post_type_id
+WHERE POSTS_TYPE.site_id = :site_id
+ORDER BY POSTS.post_id DESC;

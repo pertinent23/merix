@@ -1,0 +1,4 @@
+SELECT FILES.* FROM `POSTS_FILES`
+RIGHT JOIN `FILES`
+ON FILES.file_id = POSTS_FILES.file_id
+WHERE POSTS_FILES.post_id = :post_id;
