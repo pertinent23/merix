@@ -1,0 +1,1 @@
+SELECT * FROM `PLACES` WHERE site_id = :site_id;

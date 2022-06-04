@@ -145,6 +145,10 @@
                         sleep( 0.1 );
                     }
                 }
+
+                if( count( $this->map ) ) {
+                    $this->item = $this->map[ 0 ];
+                }
             }
 
             public function valid() : bool{

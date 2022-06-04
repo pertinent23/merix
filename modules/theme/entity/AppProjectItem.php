@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppProjectItem;
+        use PDO;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppProject\AppProject;
@@ -44,14 +45,28 @@
                 
             }
 
-            public static function get(int $id): mixed
-            {
+            public static function get(int $id): mixed {
                 
             }
 
-            public static function gets(int $user_id): array
-            {
-                return [];
+            public static function gets(int $id): array {
+                $req = new AppRequest( 'project.list', [
+                    'site_id' => $id
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                return array_map( function ( $item ) {
+                    $site = new AppProjectItem(
+                        $item[ 'site_id' ],
+                        $item[ 'file_id' ],
+                        $item[ 'name' ],
+                        $item[ 'description' ]
+                    );
+                    $site->setProjectId( intval( $item[ 'project_id' ] ) );
+                    $site->setCreatedDate( $item[ 'createdAt' ] );
+                    $site->setUpdatedDate( $item[ 'updatedAt' ] );
+                    return $site;
+                }, $result );
             }
 
             public static function delete(int $id): bool

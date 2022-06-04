@@ -1,0 +1,1 @@
+SELECT * FROM `PROJECTS` WHERE site_id = :site_id;

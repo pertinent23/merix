@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppPlaceItem;
+        use PDO;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppPlace\AppPlace;
@@ -55,8 +56,31 @@
                 
             }
 
-            public static function gets(int $user_id): array {
-                return [];
+            public static function gets(int $id): array {
+                $req = new AppRequest( 'place.list', [
+                    'site_id' => $id
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                return array_map( function ( $item ) {
+                    $site = new AppPlaceItem(
+                        $item[ 'site_id' ],
+                        $item[ 'name' ],
+                        $item[ 'description' ]
+                    );
+                    $site->setPlaceId( intval( $item[ 'place_id' ] ) );
+                    $site->setCreatedDate( $item[ 'createdAt' ] );
+                    $site->setUpdatedDate( $item[ 'updatedAt' ] );
+                        $req = new AppRequest( 'place.list.files', [
+                            'place_id' => $site->getPlaceId()
+                        ] );
+                        $req->exec();
+                        $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                        $site->setFiles( array_map( function ( $item ) {
+                            return intval( $item[ 'file_id' ] );
+                        } , $result ) );
+                    return $site;
+                }, $result );
             }
 
             public static function delete(int $id): bool {

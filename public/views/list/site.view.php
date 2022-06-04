@@ -1,5 +1,18 @@
 <?php 
     use App\modules\AppPacker\AppPacker;
+    use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\theme\entity\AppSiteItem\AppSiteItem;
+
+    $site_id = AppGlobal::get( 's' );
+
+    if ( !$site_id ) {
+        AppPacker::redirectTo( 'account/sites' );
+    }
+
+    $item = AppSiteItem::get( intval( $site_id ) );
+    if ( !( $item instanceof  AppSiteItem ) ) {
+        AppPacker::redirectTo( 'account/sites' );
+    }
 ?>
 <header class="colored"></header>
 <nav class="d-flex flex-column justify-content-between align-items-center light">
@@ -18,42 +31,42 @@
                 <i class="bi bi-file-earmark-person"></i>
                 <span> Nom </span>
             </div>
-            <p class="list-item-text"> nom de la mairie </p>
+            <p class="list-item-text"> <?= $item->getName() ?> </p>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column">
             <div class="d-flex w-100 align-items-center list-item-label">
                 <i class="bi bi-journal-text"></i>
                 <span> Slogan </span>
             </div>
-            <p class="list-item-text"> slogan de la marie </p>
+            <p class="list-item-text"> <?= $item->getSlogan() ?> </p>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column">
             <div class="d-flex w-100 align-items-center list-item-label">
                 <i class="bi bi-globe2"></i>
                 <span> Pays </span>
             </div>
-            <p class="list-item-text"> pays de la marie </p>
+            <p class="list-item-text"> <?= $item->getCountry() ?> </p>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column">
             <div class="d-flex w-100 align-items-center list-item-label">
                 <i class="bi bi-geo-fill"></i>
                 <span> Commune </span>
             </div>
-            <p class="list-item-text"> Commune de la marie </p>
+            <p class="list-item-text"> <?= $item->getDistrict() ?> </p>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column">
             <div class="d-flex w-100 align-items-center list-item-label">
                 <i class="bi bi-geo-alt-fill"></i>
                 <span> Quartier </span>
             </div>
-            <p class="list-item-text"> quartier de la marie </p>
+            <p class="list-item-text"> <?= $item->getPosition() ?> </p>
         </div>
         <div class="w-100 d-flex list-item align-items-center flex-column">
             <div class="d-flex w-100 align-items-center list-item-label">
                 <i class="bi bi-book-half"></i>
                 <span> Histoire </span>
             </div>
-            <p class="list-item-text"> histoire de la marie </p>
+            <p class="list-item-text"> <?= $item->getHistory() ?> </p>
         </div>
     </section>
 </main>

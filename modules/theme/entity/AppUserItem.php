@@ -92,7 +92,24 @@
             }
 
             public static function get( int $id ) : mixed {
-                return [];
+                $req = new AppRequest( 'user.select', [
+                    'user_id' => $id,
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetch( PDO::FETCH_ASSOC );
+                if ( $result ) {
+                    $data = new AppUserItem(
+                        $result[ 'email' ],
+                        $result[ 'password' ],
+                        $result[ 'name' ],
+                        $result[ 'role' ],
+                    );
+                    $data->setUserId( intval( $result[ 'user_id' ] ) );
+                    $data->setCreatedDate( $result[ 'createdAt' ] );
+                    $data->setCreatedDate( $result[ 'updatedAt' ] );
+                    return $data;
+                }
+                return false;
             }
 
             public static function gets( int $user_id ) : array {
