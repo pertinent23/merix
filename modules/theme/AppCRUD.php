@@ -29,7 +29,7 @@
                 * this function will be use to 
                 * select all items in the database
             */
-            public static function gets() : array;
+            public static function gets( int $user_id ) : array;
 
             /** 
                 *

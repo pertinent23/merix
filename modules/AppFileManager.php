@@ -140,8 +140,15 @@
                 * return a global link to another 
                 * api 
             */
-            public static function getLink( string $link = '' ) : string {
-                return AppEnv::getServerLink()."$link";
+            public static function getLink( string $link = '', $data = [] ) : string {
+                $url = '';
+                    if ( count( $data ) !== 0 ) {
+                        $url = '?';
+                            foreach( $data as $key => $val )
+                                $url .= $key . '=' . $val . '&';
+                        $url = substr( $url, 0, strlen( $url ) - 1 );
+                    }
+                return AppEnv::getServerLink()."$link".$url;
             }
 
             /** 

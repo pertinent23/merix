@@ -1,6 +1,7 @@
 <?php 
     namespace App\modules\AppView;
         use App\modules\AppFileManager\AppFileManager;
+use Exception;
 
         class AppView{
             /** 
@@ -55,7 +56,7 @@
             */
             protected function check() : void {
                 if ( !file_exists( $this->open() ) ) {
-                    http_response_code( 404 );
+                        throw new Exception( "Not found view {$this->open()}" );
                     exit( 1 );
                 }
             }

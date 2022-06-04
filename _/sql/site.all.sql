@@ -1,0 +1,1 @@
+SELECT * FROM `SITES` WHERE user_id = :user_id;

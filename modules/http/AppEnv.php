@@ -37,6 +37,7 @@
             */
             public static function get_resource() : string {
                 $path = isset( $_SERVER[ 'REDIRECT_URL' ] ) ? $_SERVER[ 'REDIRECT_URL' ] : ( isset( $_SERVER[ 'REQUEST_URI' ] ) ? $_SERVER[ 'REQUEST_URI' ] : $_SERVER[ 'HTTP_REDIRECT_URL' ] );
+                $path = preg_split( "#\?#", $path )[ 0 ];
                 if ( AppEnv::is_local() ) {
                     $list = explode( '/', $path );
                     array_shift( $list );

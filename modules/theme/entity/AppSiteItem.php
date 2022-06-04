@@ -1,5 +1,6 @@
 <?php 
     namespace App\modules\theme\entity\AppSiteItem;
+        use PDO;
         use App\modules\theme\AppCRUD\AppCRUD;
         use App\modules\db\AppRequest\AppRequest;
         use App\modules\theme\types\AppSite\AppSite;
@@ -15,7 +16,6 @@
             private string $country;
             private string $position;
             private int $user_id;
-            private int $file_id;
             private int $site_id;
 
             public function __construct( 
@@ -42,8 +42,8 @@
                 $this->user_id = $val;
             }
 
-            private function setFileId( int $val ) : void {
-                $this->file_id = $val;
+            private function setSiteId( int $val ) : void {
+                $this->site_id = $val;
             }
 
             private function setName( string $val ) : void {
@@ -98,10 +98,6 @@
                 return $this->user_id;
             }
 
-            public function getFileId(): int{
-                return $this->file_id;
-            }
-
             public function getSiteId(): int {
                 return $this->site_id;
             }
@@ -120,26 +116,40 @@
                     'updatedAt' => AppTimeStampItem::now()
                 ] );
                 $req->exec();
-                $this->site_id = $req->getLastId();
+                $this->setSiteId( $req->getLastId() );
             }
 
-            public function update(int $id): void
-            {
+            public function update(int $id): void {
                 
             }
 
-            public static function gets(): array
-            {
-                return [];
+            public static function gets( int $user_id ): array {
+                $req = new AppRequest( 'site.all', [
+                    'user_id' => $user_id
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetchAll( PDO::FETCH_ASSOC );
+                return array_map( function ( $item ) {
+                    $site = new AppSiteItem(
+                        $item[ 'user_id' ],
+                        $item[ 'file_id' ],
+                        $item[ 'name' ],
+                        $item[ 'slogan' ],
+                        $item[ 'district' ],
+                        $item[ 'history' ],
+                        $item[ 'country' ],
+                        $item[ 'position' ]
+                    );
+                    $site->setSiteId( intval( $item[ 'site_id' ] ) );
+                    return $site;
+                }, $result );
             }
 
-            public static function get(int $id): mixed
-            {
+            public static function get(int $id): mixed {
                 
             }
 
-            public static function delete(int $id): bool
-            {
+            public static function delete(int $id): bool {
                 return true;
             }
         }

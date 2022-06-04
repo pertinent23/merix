@@ -10,7 +10,6 @@
             use AppContentFileItem;
             protected int $employee_id;
             protected int $role_id;
-            protected int $file_id;
             protected string $background;
             protected string $description;
             protected string $first_name;
@@ -37,10 +36,6 @@
 
             protected function setRoleId( int $val ) : void {
                 $this->role_id = $val;
-            }
-
-            protected function setFileId( int $val ) : void {
-                $this->file_id = $val;
             }
 
             protected function setAge( int $val ) : void {
@@ -93,10 +88,6 @@
 
             public function getRoleId(): int {
                 return $this->file_id;
-            }
-
-            public function getFileId(): int {
-                return $this->role_id;
             }
         }
 ?>

@@ -824,7 +824,109 @@
         } catch( e ) {
             return {};
         }
-    }
+    };
+
+    /**
+        * 
+        * @param {String} url 
+        * @returns {Object}
+        * *
+        * this function will be use
+        * to manage url
+    */
+    tools.urls = function ( url ) {
+        url = url ? url : window.location.href; 
+        const 
+            parts = url.split( '?' ),
+            queries = ( parts[ 1 ] || '' ).split( '&' ).filter( item => item.trim().length ),
+            data = queries.map( val => val.split( '=' ) );
+            url = parts[ 0 ];
+        return {
+            /** 
+                *
+                * this function will return
+                * all params of the url 
+            */
+            get params() {
+                const 
+                    resust = {};
+                        for( const part of data ) 
+                            resust[ part[ 0 ] ] = part[ 1 ];
+                return resust;
+            },
+
+            /**
+                * 
+                * @param {Object} list 
+                * @returns {Object}
+                * *
+                * will add a params in the
+                * query map
+            */
+            addParams( list = {} ) {
+                if ( typeof list === 'object' && !Array.isArray( list ) ) {
+                    for( const key in list ) {
+                        const 
+                            val = list[ key ];
+                        data.push( [ encodeURIComponent( key ), encodeURIComponent( val ) ] );
+                    }
+                }
+                return this;
+            },
+
+            /**
+                * 
+                * @param {String} key 
+                * @param {String} value 
+                * @returns {Object}
+                * *
+                * this function will be call
+                * to add a key to the url
+            */
+            add( key, value ) {
+                if ( typeof key === 'string' && typeof value === "string" ) {
+                    this.addParams( {
+                        [ key ]: value
+                    } );
+                }
+                return this;
+            },
+
+            /**
+                * 
+                * @param {String} key 
+                * @returns {String}
+                * *
+                * this function will return
+                * the value of a key if the key exist
+            */
+            get( key ) {
+                return decodeURIComponent( this.params[ encodeURIComponent( key ) ] );
+            },
+
+            /**
+                * 
+                * @returns {String}
+                * *
+                * this function will return
+                * the current url component
+            */
+            getUrl() {
+                if ( data.length === 0 ) {
+                    return url;
+                } else if ( data.length === 1 ) {
+                    return url.concat( '?' ).concat( data[ 0 ][ 0 ] ).concat( '=' ).concat( data[ 0 ][ 1 ]);
+                }
+
+                let
+                    result = url.concat( '?' ),
+                    params = this.params;
+                        for( const key in params ) 
+                            result += key.concat( '=' ).concat( params[ key ] ).concat( '&' );
+                return result.substring( 0, result.length - 1 );
+            }
+        };
+    };
     
     wn.tools = tools;
 } )( window );

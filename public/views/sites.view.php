@@ -1,3 +1,16 @@
+<?php 
+    use App\modules\AppPacker\AppPacker;
+    use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\theme\entity\AppSiteItem\AppSiteItem;
+
+    $user_id = AppGlobal::get( 'i' );
+
+    if ( !$user_id ) {
+        AppPacker::redirectTo();
+    }
+
+    $list = AppSiteItem::gets( intval( $user_id ) );
+?>
 <header class="colored"></header>
 <nav class="d-flex flex-column justify-content-between align-items-center light">
     <section class="navbar-brand d-flex align-items-center">
@@ -13,13 +26,12 @@
             </div><br>
             <span class="page-item-title"> CREER </span>
         </div>
-        <a href="dashboard" class="page-option page-item d-flex flex-column align-items-center justify-content-between">
-            <div class="page-image d-flex justify-content-center align-items-center">
-                <i class="bi bi-images"></i>
-                <img src="../static/assets/images/fruit.png" alt="logo of the site">
-            </div>
-            <span class="page-item-title"> Complement </span>
-            <span class="page-item-slogan"> slogan of my site </span>
-        </a>
+        <?php 
+            foreach ( $list as $item ) {
+                AppPacker::render( 'items/site.item', [
+                    'data' => $item
+                ] );
+            }
+        ?>
     </section>
 </main>

@@ -40,7 +40,7 @@
                 * this function will be use to make
                 * redirections 
             */
-            public static function redirectTo( string $path ): void {
+            public static function redirectTo( string $path = '' ): void {
                     AppGlobal::header( 'location', AppFileManager::getLink( $path ) );
                 die();
             }

@@ -5,7 +5,9 @@
                 window.localStorage.setItem( 'user', 
                     JSON.stringify( r ) 
                 );
-                tools.redirect( 'account/sites' );
+                tools.redirect(
+                    tools.urls( 'account/sites' ).add( 'i', r.user_id ).getUrl()
+                );
             } );
         } );
 
@@ -14,7 +16,9 @@
                 window.localStorage.setItem( 'user', 
                     JSON.stringify( r ) 
                 );
-                tools.redirect( 'account/sites' );
+                tools.redirect(
+                    tools.urls( 'account/sites' ).add( 'i', r.user_id ).getUrl()
+                );
             } );
         } );
     } );

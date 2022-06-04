@@ -74,7 +74,7 @@
                 
             }
 
-            public static function gets(): array
+            public static function gets( int $user_id ): array
             {
                 return [];
             }
@@ -92,9 +92,32 @@
 
         trait AppContentFileItem{
             protected AppFileItem $file;
+            protected int $file_id;
+
+            public function setFile( AppFileItem $file ) : void {
+                $this->file = $file;
+            }
 
             public function getFile(): AppFile{
                 return $this->file;
+            }
+
+            public function getFileId(): int{
+                return $this->file_id;
+            }
+
+            public function setFileId( int $id ): void {
+                $this->file_id = $id;
+                $req = new AppRequest( 'file.item', [
+                    'file_id' => $id
+                ] );
+                $result = $req->exec()->getResult()->fetch();
+                $this->setFile( new AppFileItem(
+                    $result[ 'url' ],
+                    $result[ 'title' ],
+                    $result[ 'description' ],
+                    $result[ 'type' ]
+                ) );
             }
         }
 

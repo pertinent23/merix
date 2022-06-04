@@ -95,7 +95,7 @@
                 return [];
             }
 
-            public static function gets() : array {
+            public static function gets( int $user_id ) : array {
                 return [];
             }
         }
