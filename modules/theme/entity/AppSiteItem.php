@@ -35,14 +35,16 @@
                 $this->setPosition( $position );
                 $this->setDistrict( $district );
                 $this->setUserId( $user_id );
-                $this->setFileId( $file_id );
+                if ( $file_id  ) {
+                    $this->setFileId( $file_id );
+                } 
             }
 
             private function setUserId( int $val ) : void {
                 $this->user_id = $val;
             }
 
-            private function setSiteId( int $val ) : void {
+            public function setSiteId( int $val ) : void {
                 $this->site_id = $val;
             }
 
@@ -103,7 +105,7 @@
             }
 
             public function create(): void {
-                $req = new AppRequest( 'site.insert', [
+                $req = new AppRequest( 'site.update', [
                     'user_id' => $this->getUserId(),
                     'file_id' => $this->getFileId(),
                     'name' => $this->getName(),
@@ -119,8 +121,18 @@
                 $this->setSiteId( $req->getLastId() );
             }
 
-            public function update(int $id): void {
-                
+            public function update(): void {
+                $req = new AppRequest( 'site.update', [
+                    'site_id' => $this->getSiteId(),
+                    'name' => $this->getName(),
+                    'slogan' => $this->getSlogan(),
+                    'history' => $this->getHistory(),
+                    'position' => $this->getPosition(),
+                    'district' => $this->getDistrict(),
+                    'country' => $this->getCountry(),
+                    'updatedAt' => AppTimeStampItem::now()
+                ] );
+                $req->exec();
             }
 
             public static function gets( int $user_id ): array {
@@ -148,7 +160,28 @@
             }
 
             public static function get(int $id): mixed {
-                
+                $req = new AppRequest( 'site.get', [
+                    'site_id' => $id,
+                ] );
+                $req->exec();
+                $result = $req->getResult()->fetch( PDO::FETCH_ASSOC );
+                if ( $result ) {
+                    $data = new AppSiteItem(
+                        $result[ 'user_id' ],
+                        $result[ 'file_id' ],
+                        $result[ 'name' ],
+                        $result[ 'slogan' ],
+                        $result[ 'district' ],
+                        $result[ 'history' ],
+                        $result[ 'country' ],
+                        $result[ 'position' ],
+                    );
+                    $data->setSiteId( intval( $result[ 'site_id' ] ) );
+                    $data->setCreatedDate( $result[ 'createdAt' ] );
+                    $data->setCreatedDate( $result[ 'updatedAt' ] );
+                    return $data;
+                }
+                return false;
             }
 
             public static function delete(int $id): bool {

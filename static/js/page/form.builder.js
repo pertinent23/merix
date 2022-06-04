@@ -76,6 +76,7 @@
             createTextarea( options ) {
                 const 
                     field = tools.create( 'textarea' );
+                        field.textContent = options.value;
                         tools.attr( field, {
                             placeholder: options.placeholder,
                             value: options.value

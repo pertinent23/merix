@@ -241,6 +241,14 @@
         AppPacker::view( 'api/site' )
     ) );
 
+    AppRouter::addRoute( 'api/site/get', AppGlobal::usePost(
+        AppPacker::view( 'api/site.get' )
+    ) );
+
+    AppRouter::addRoute( 'api/site/update', AppGlobal::usePost(
+        AppPacker::view( 'api/site.update' )
+    ) );
+
     AppRouter::addRoute( 'api/project', AppGlobal::usePost(
         AppPacker::view( 'api/project' )
     ) );

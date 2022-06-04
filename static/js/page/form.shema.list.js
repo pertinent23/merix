@@ -88,7 +88,7 @@
 
     shema.addShema( 'site-update', ( data ) =>  {
         return shema
-            .createFormShema( 'api/user/registration', 'POST' )
+            .createFormShema( 'api/site/update', 'POST' )
             .setTitle( 'SITE' )
             .setSubTitle( 'INFORMATIONS DE MON SITE' )
             .setSubmit( 'MODIFIER', 'arrow-repeat' )
@@ -96,38 +96,40 @@
             .addInput( 'name', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Nom',
-                icon: 'file-earmark-person'
-            } )
-            .addInput( 'name', 'text', {
-                validators: [ 'required', [ 'minlen', 3 ] ],
-                label: 'Nom',
-                icon: 'bookmark-check-fill'
+                icon: 'bookmark-check-fill',
+                value: data.name
             } )
             .addInput( 'slogan', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Slogan',
-                icon: 'journal-text'
+                icon: 'journal-text',
+                value: data.slogan
             } )
             .addInput( 'country', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Pays',
-                icon: 'globe2'
+                icon: 'globe2',
+                value: data.country
             } )
-            .addInput( 'Disctrict', 'text', {
+            .addInput( 'district', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Commune',
-                icon: 'geo-fill'
+                icon: 'geo-fill',
+                value: data.district
             } )
             .addInput( 'position', 'text', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Quartier',
-                icon: 'geo-alt-fill'
+                icon: 'geo-alt-fill',
+                value: data.position
             } )
             .addInput( 'history', 'textarea', {
                 validators: [ 'required', [ 'minlen', 3 ] ],
                 label: 'Historique',
-                icon: 'book-half'
+                icon: 'book-half',
+                value: data.history
             } )
+            .addData( 'site_id', tools.urls().get( 's' ) )
         .toJSON();
     } )
 

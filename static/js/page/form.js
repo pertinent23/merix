@@ -51,8 +51,10 @@
                     method: meta.method || 'POST',
                     data: result
                 } ).then( result => {
+                    console.log( result )
                     return service.send( result.json() );
                 } ).catch( err => {
+                    console.log( err, err.text())
                     try {
                         return builder.setError( err.json().msg );
                     } catch( e ) {

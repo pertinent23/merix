@@ -64,7 +64,7 @@
                     $role->setCreatedDate( $item[ 'createdAt' ] );
                     $role->setCreatedDate( $item[ 'updatedAt' ] );
                     return $role;
-                }, $result );;
+                }, $result );
             }
 
             public static function delete(int $id): bool {

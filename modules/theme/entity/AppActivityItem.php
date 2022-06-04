@@ -47,7 +47,7 @@
                 }
             }
 
-            public function update(int $id): void {
+            public function update(): void {
                 
             }
 

@@ -14,7 +14,7 @@
                 * this function will be use to 
                 * update an item in the database 
             */
-            public function update( int $id ) : void;
+            public function update() : void;
 
             /** 
                 *

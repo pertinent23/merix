@@ -10,8 +10,18 @@
 
     const fx = {
         site() {
-            tools.formService( shema.getShema( 'site-update' )() ).then( () => {
-                return window.location.reload();
+            tools.request( {
+                url: 'api/site/get',
+                method: 'post',
+                data: {
+                    site_id: tools.urls().get( 's' )
+                }
+            } ).send().then( r => {
+                tools.formService( shema.getShema( 'site-update' )( r.json() ) ).then( () => {
+                    return window.location.reload();
+                } );
+            } ).catch( err => {
+                console.log( err.text() )
             } );
         },
         addProject() {
