@@ -86,6 +86,15 @@
                 * return true if the sql
                 * global key exist 
             */
+            public static function verifyThemeExist() : bool {
+                return defined( 'themes' );
+            }
+
+            /** 
+                *
+                * return true if the sql
+                * global key exist 
+            */
             public static function verifyConfigsExist() : bool {
                 return defined( 'configs' );
             }
@@ -107,6 +116,18 @@
             public static function getUploadPath( string $name = '' ) : string {
                 if ( AppFileManager::verifyUploadsExist() ) {
                     return constant( 'uploads' ) . "$name";
+                }
+                return '';
+            }
+
+            /** 
+                *
+                * return the path to a
+                * them file path 
+            */
+            public static function getThemePath( string $name = '' ) : string {
+                if ( AppFileManager::verifyThemeExist() ) {
+                    return constant( 'themes' ) . "$name";
                 }
                 return '';
             }
