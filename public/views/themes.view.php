@@ -1,9 +1,23 @@
 <?php 
     use App\modules\AppPacker\AppPacker;
     use App\modules\AppTheme\AppTheme;
+    use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\AppFileManager\AppFileManager;
 
     $list = AppTheme::getThemeList();
     $theme_map = [];
+
+    $site_id = AppGlobal::get( 's' );
+    $user_id = AppGlobal::get( 'i' );
+
+    if ( !$site_id OR !$user_id ) {
+        AppPacker::redirectTo( 'account/sites' );
+    }
+
+    $i_ds = [
+        's' => $site_id,
+        'i' => $user_id
+    ];
 
     foreach ( $list as $theme ) {
         $data = AppTheme::getThemeData( $theme );
@@ -47,10 +61,16 @@
                     <div class="theme-item d-flex flex-column align-items-center justify-content-center">
                         <img src="<?= $data[ 'img' ] ?>" alt="theme mockup">
                         <div class="theme-content-action d-flex justify-content-center align-items-center">
-                            <button class="d-flex align-items-center">
-                                <i class="bi bi-shuffle"></i>
-                                <span> APPLIQUER </span>
-                            </button>
+                            <a 
+                                href="<?= AppFileManager::getLink( 'account/settheme', array_merge( $i_ds, [ 't' => $data[ 'name' ] ] ) ) ?>" 
+                                style="text-decoration: none;" 
+                                class="d-flex justify-content-center align-items-center"
+                            >
+                                <button class="d-flex align-items-center">
+                                    <i class="bi bi-shuffle"></i>
+                                    <span> APPLIQUER </span>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 <?php

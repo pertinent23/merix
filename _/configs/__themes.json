@@ -1,7 +1,11 @@
 {
     "default": "all-black",
-    "sites": {},
+    "sites": {
+        "3": "moo"
+    },
     "list": [
-        "all-black", "belize", "moo"
+        "all-black",
+        "belize",
+        "moo"
     ]
 }

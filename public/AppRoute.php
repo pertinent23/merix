@@ -297,4 +297,8 @@
     AppRouter::addRoute( 'api/employee', AppGlobal::usePost(
         AppPacker::view( 'api/employee' )
     ) );
+
+    AppRouter::addRoute( 'account/settheme', AppGlobal::useGet(
+        AppPacker::view( 'settheme' )
+    ) );
 ?>
