@@ -1,11 +1,24 @@
 <?php 
     use App\modules\AppTheme\AppTheme;
     use App\modules\AppPacker\AppPacker;
+    use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\theme\AppThemeManager\AppThemeManager;
+    use App\modules\theme\entity\AppEmployeeItem\AppEmployeeItem;
+
+    $id = AppGlobal::get( 's' ) ? AppGlobal::get( 's' ) : 0;
+    $res =  AppThemeManager::getEmployees( $id  );
+    $site = AppThemeManager::getSite( $id );
+    $list = array_filter( $res, function ( AppEmployeeItem $item ) {
+        $role = $item->getRole();
+        if ( $role->getLabel() === 'mayor' || $role->getLabel() === 'deputy-mayor'  ) {
+            return true;
+        }
+    } );
 ?>
 <nav class="w-100 d-flex align-items-center navbar flex-column">
     <section class="navbar-brand d-flex align-items-center">
         <i class="bi bi-building"></i>
-        <p class="navbar-title"> THE HALL NAME </p>
+        <p class="navbar-title"> <?= $site->getName() ?> </p>
         <span class="bar"></span>
     </section>
     <section class="navbar-container d-flex align-items-center space">
@@ -53,7 +66,7 @@
     </div>
     <section class="w-100 d-flex justify-content-center align-items-center page-item-container">
         <?php 
-            AppPacker::renderThemeView( 'all-black', 'not' );
+            if ( !count( $list) ) AppPacker::renderThemeView( 'all-black', 'not' );
         ?>
         <div class="w-100 d-flex flex-column page-item">
             <div class="w-100 d-flex justify-content-center align-items-center page-item-image-container">

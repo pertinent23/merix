@@ -1,7 +1,8 @@
 {
     "default": "all-black",
     "sites": {
-        "3": "moo"
+        "3": "all-black",
+        "1": "moo"
     },
     "list": [
         "all-black",
