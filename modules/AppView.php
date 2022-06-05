@@ -1,7 +1,7 @@
 <?php 
     namespace App\modules\AppView;
+        use Exception;
         use App\modules\AppFileManager\AppFileManager;
-use Exception;
 
         class AppView{
             /** 

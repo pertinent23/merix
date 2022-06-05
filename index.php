@@ -2,6 +2,7 @@
     namespace App;
         require( './_/__loader.php' );
 
+        use App\modules\AppTheme\AppTheme; 
         use App\modules\http\AppEnv\AppEnv;
         use App\modules\AppPacker\AppPacker;
         use App\modules\http\AppRouter\AppRouter;
@@ -56,6 +57,13 @@
             }
         }
     } );
+
+    /** 
+        *
+        * this function will add a
+        * middle ware to manage themes 
+    */
+    AppTheme::addThemeMiddleWare();
 
     /** 
         *

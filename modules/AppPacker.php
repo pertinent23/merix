@@ -1,6 +1,7 @@
 <?php 
     namespace App\modules\AppPacker;
         use App\modules\AppView\AppView as AppView;
+        use App\modules\AppTheme\AppTheme as AppTheme;
         use App\modules\AppBundle\AppBundle as AppBundle;
         use App\modules\http\AppGlobal\AppGlobal as AppGlobal;
         use App\modules\AppFileManager\AppFileManager as AppFileManager;
@@ -33,6 +34,14 @@
             */
             public static function render( string $name, array $args = [ ] ) : void {
                 AppPacker::view( $name, $args )->run();
+            }
+
+            /** 
+                *
+                * get a new view then render it 
+            */
+            public static function renderThemeView( string $theme, string $name, array $args = [ ] ) : void {
+                AppPacker::theme( $theme, $name, $args )->run();
             }
 
             /**
@@ -76,6 +85,14 @@
             */
             public static function bundle( string $name, array $args = [ ] ) : AppBundle {
                 return new AppBundle( $name, $args );
+            }
+
+            /** 
+                *
+                * return a theme object 
+            */
+            public static function theme( string $theme, string $name, array $args = [ ] ) : AppTheme {
+                return new AppTheme( $theme, $name, $args );
             }
 
             /**

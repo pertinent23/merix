@@ -1,4 +1,7 @@
 {
-    "default": "all-back",
-    "sites": {}
+    "default": "all-black",
+    "sites": {},
+    "list": [
+        "all-black", "belize"
+    ]
 }
