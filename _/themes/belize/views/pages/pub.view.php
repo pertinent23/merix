@@ -1,15 +1,14 @@
 <?php 
     use App\modules\AppTheme\AppTheme;
-    use App\modules\AppPacker\AppPacker;
 ?>
 <nav class="w-100 d-flex align-items-center navbar flex-column">
     <section class="navbar-brand d-flex align-items-center">
         <i class="bi bi-building"></i>
-        <p class="navbar-title"> THE HALL NAME </p>
+        <p class="navbar-title"> Publicité </p>
         <span class="bar"></span>
     </section>
     <section class="navbar-container d-flex align-items-center space">
-        <a href="index" class="navbar-item d-flex align-items-center justify-content-center active" id="home">
+        <a href="index" class="navbar-item d-flex align-items-center justify-content-center" id="home">
             <p> Accueil </p>
         </a>
         <a href="tourism" class="navbar-item d-flex align-items-center justify-content-center" id="tourism">
@@ -24,37 +23,7 @@
     </section>
 </nav>
 <main class="w-100 d-flex flex-column align-items-center content-item-data">
-    <h1 class="page-bar"></h1>
-    <div class="w-100 d-flex flex-column flex-md-row justify-content-center align-items-center page-presentation">
-        <div class="page-presentation-image d-flex justify-content-center align-items-center">
-            <div class="page-presentation-image-container d-flex justify-content-center align-items-center">
-                <img
-                    src="<?= AppTheme::getAssetsPath( 'all-black', 'eyasu-etsub-j3R9C-Xqe1w-unsplash.jpg' ) ?>" 
-                    alt="Mairie Image"
-                    class="w-100"
-                >
-            </div>
-        </div>
-        <div class="page-presentation-data d-flex flex-column">
-            <h1> Nom de ma mairie </h1>
-            <h5 class="upper"> Slogan de la mairei </h5>
-            <h4>
-                <i class="bi bi-globe2"></i>
-                <span class="upper"> Pays </span>
-            </h4>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed non risus. Suspendisse lectus tortor, 
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor. 
-                Cras elementum ultrices diam. Maecenas ligula massa, varius a, 
-                semper congue, euismod non, mi. Proin porttitor, orci nec nonummy 
-            </p>
-        </div>
-    </div>
     <section class="w-100 d-flex justify-content-center align-items-center page-item-container">
-        <?php 
-            AppPacker::renderThemeView( 'all-black', 'not' );
-        ?>
         <div class="w-100 d-flex flex-column page-item">
             <div class="w-100 d-flex justify-content-center align-items-center page-item-image-container">
                 <img 

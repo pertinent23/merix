@@ -2,6 +2,6 @@
     "default": "all-black",
     "sites": {},
     "list": [
-        "all-black", "belize"
+        "all-black", "belize", "moo"
     ]
 }

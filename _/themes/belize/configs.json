@@ -1,5 +1,14 @@
 {
-    "name": "belize",
-    "preview": "",
-    "routes": {}
+    "name": "all-black",
+    "preview": "preview.png",
+    "routes": {
+        "index": "index",
+        "tourism": "tourism",
+        "employee": "employee",
+        "other": "other",
+        "pub": "pub",
+        "post": "post",
+        "activity": "activity",
+        "project": "project"
+    }
 }
