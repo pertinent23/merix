@@ -14,11 +14,13 @@ RewriteRule . index.php [L]
 RewriteCond %{SERVER_ADDR} 127\.0\.0\.1
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_URI} !^/[a-z0-9_\.]+/static
+RewriteCond %{REQUEST_URI} !^/[a-z0-9_\.]+/_/themes/[^/]+/assets/
 RewriteRule . index.php [L]
 
 RewriteCond %{SERVER_ADDR} !^127\.0\.0\.1$
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_URI} !/static
+RewriteCond %{REQUEST_URI} !/_/themes/[^/]+/assets/
 RewriteRule . index.php [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -2,8 +2,13 @@
     "name": "all-black",
     "preview": "",
     "routes": {
-        "index": "a",
-        "a": "a",
-        "b": "b"
+        "index": "index",
+        "tourism": "tourism",
+        "employee": "employee",
+        "other": "other",
+        "pub": "pub",
+        "post": "post",
+        "activity": "activity",
+        "project": "project"
     }
 }

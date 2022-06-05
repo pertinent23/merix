@@ -1,6 +1,8 @@
 <?php 
     namespace App\modules\AppTheme;
         use App\modules\AppView\AppView;
+        use App\modules\AppBundle\AppBundle;
+        use App\modules\http\AppEnv\AppEnv;
         use App\modules\AppPacker\AppPacker;
         use App\modules\http\AppRouter\AppRouter;
         use App\modules\http\AppGlobal\AppGlobal;
@@ -133,6 +135,67 @@
                         }
                     }
                 } );
+            }
+
+            public static function getAssetsPath( string $theme, string $path ) : string {
+                return AppEnv::getServerLink().AppFileManager::getThemePath( "$theme/assets/$path" );
+            }
+
+            public static function addJSView( string $theme, string $path, array $args = AppPacker::JS_DEFAULT ) : AppBundle {
+                return AppPacker::bundle( "js", array_merge(
+                    AppPacker::JS_DEFAULT,
+                    $args, [
+                        'src' => self::getAssetsPath( $theme, "$path.js" )
+                    ]
+                ) );
+            }
+
+            public static function addCSSView( string $theme, string $path, array $args = AppPacker::CSS_DEFAULT ) : AppBundle {
+                return AppPacker::bundle( "css", array_merge(
+                    AppPacker::CSS_DEFAULT,
+                    $args, [
+                        'href' => self::getAssetsPath( $theme, "$path.css" )
+                    ]
+                ) );
+            }
+
+            public static function addIMGView( string $theme, string $path, array $args = AppPacker::IMG_DEFAULT ) : AppBundle {
+                return AppPacker::bundle( "image", array_merge(
+                    AppPacker::IMG_DEFAULT,
+                    $args, [
+                        'src' => self::getAssetsPath( $theme, "$path" )
+                    ]
+                ) );
+            }
+
+            /** 
+                *
+                * this function will be use 
+                * to add an img to the current 
+                * view 
+            */
+            public static function addIMG( string $theme, string $src, array $args = AppPacker::IMG_DEFAULT ) : void {
+                self::addIMGView( $theme, $src, $args )->run();
+            }
+
+            /** 
+                *
+                * this function will be use 
+                * to add a css file to the current 
+                * view 
+            */
+            public static function addCSS( string $theme, string $src, array $args = AppPacker::CSS_DEFAULT ) : void {
+                self::addCSSView( $theme, $src, $args )->run();
+            }
+
+            /** 
+                *
+                * this function will be use 
+                * to add a js file to the current 
+                * view 
+            */
+            public static function addJS( string $theme, string $src, array $args = AppPacker::JS_DEFAULT ) : void {
+                self::addJSView( $theme, $src, $args )->run();
             }
         }
 ?>

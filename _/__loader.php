@@ -7,7 +7,7 @@
         define( 'routes', './public/AppRoute.php' );
         define( 'sql', './_/sql/' );
         define( 'configs', './_/configs/' );
-        define( 'themes', './_/themes/' );
+        define( 'themes', '_/themes/' );
         define( 'uploads', 'static/assets/uploads/' );
 
         function __split_file( string $name = "" ) {
