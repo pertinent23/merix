@@ -2,6 +2,7 @@
     use App\modules\AppFileManager\AppFileManager;
     use App\modules\AppPacker\AppPacker;
     use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\AppTheme\AppTheme;
 
     $site_id = AppGlobal::get( 's' );
     $user_id = AppGlobal::get( 'i' );
@@ -14,6 +15,8 @@
         's' => $site_id,
         'i' => $user_id
     ];
+
+    $path = "preview/".AppTheme::getThemeOfSite( $site_id )."/index";
 ?>
 <main class="preview-container w-100 d-flex flex-column">
     <div class="w-100 preview-nav d-flex flex-colum justify-content-between align-items-center">
@@ -29,6 +32,6 @@
         </a>
     </div>
     <div class="w-100 preview-data d-flex flex-column justify-content-center align-items-center">
-        <iframe src="dashboard" frameborder="0" class="w-100 preview-frame"></iframe>
+        <iframe src="<?= AppFileManager::getLink( $path, [ 's' => $site_id ] ) ?>" frameborder="0" class="w-100 preview-frame"></iframe>
     </div>
 </main>

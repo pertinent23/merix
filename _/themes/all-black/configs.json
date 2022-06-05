@@ -2,6 +2,7 @@
     "name": "all-black",
     "preview": "",
     "routes": {
+        "index": "a",
         "a": "a",
         "b": "b"
     }
