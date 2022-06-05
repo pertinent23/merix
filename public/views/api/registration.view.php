@@ -29,7 +29,7 @@
                 'email' => $user->getEmail(),
                 'name' => $user->getName(),
                 'role' => $user->getRole(),
-                'id' => $user->getUserId()
+                'user_id' => $user->getUserId()
             ] );
         } 
 

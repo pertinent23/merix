@@ -14,7 +14,7 @@
     margin: 8px;
 }
 
-.settings-item button{
+.settings-item .button{
     background-color: var(--purple);
     color: var(--cultured);
     border: none;
@@ -24,10 +24,11 @@
     font-weight: 600;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.11);
     letter-spacing: 0.12em;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.settings-item button i{
+.settings-item .button i{
     font-size: 20px;
     margin-right: 5px;
 }

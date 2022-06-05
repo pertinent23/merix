@@ -6,7 +6,7 @@
                     JSON.stringify( r ) 
                 );
                 tools.redirect(
-                    tools.urls( 'account/sites' ).add( 'i', r.user_id ).getUrl()
+                    tools.urls( 'account/sites' ).add( 'i', r.user_id + '' ).getUrl()
                 );
             } );
         } );

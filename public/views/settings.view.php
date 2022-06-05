@@ -1,5 +1,21 @@
 <?php 
+    use App\modules\AppTheme\AppTheme;
     use App\modules\AppPacker\AppPacker;
+    use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\AppFileManager\AppFileManager;
+
+    $site_id = AppGlobal::get( 's' );
+    $user_id = AppGlobal::get( 'i' );
+
+    if ( !$site_id OR !$user_id ) {
+        AppPacker::redirectTo( 'account/sites' );
+    }
+
+    $data = [
+        's' => $site_id,
+        'i' => $user_id,
+        't' => AppTheme::getThemeOfSite( $site_id )
+    ];
 ?>
 <header class="colored"></header>
 <nav class="d-flex flex-column justify-content-between align-items-center light">
@@ -29,10 +45,10 @@
             <span class="title"> theme choisit </span>
         </div>
         <div class="settings-item d-flex justify-content-center align-items-center">
-            <button class="d-flex align-items-center justify-content-center">
+            <a href="<?= AppFileManager::getLink( 'account/deploy', $data ) ?>" class="d-flex align-items-center justify-content-center button">
                 <i class="bi bi-cloud-upload-fill"></i>
                 <span> DEPLOYER </span>
-            </button>
+            </a>
         </div>
     </div>
 </main>

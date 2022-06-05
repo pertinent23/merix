@@ -4,7 +4,7 @@
     use App\modules\AppFileManager\AppFileManager;
     use App\modules\theme\AppThemeManager\AppThemeManager;
 
-    $id = AppGlobal::get( 's' ) ? AppGlobal::get( 's' ) : 0;
+    $id = AppGlobal::get( 's' ) ? AppGlobal::get( 's' ) : $s;
     $list =  AppThemeManager::getActivities( intval( $id )  );
 ?>
 <nav class="w-100 d-flex align-items-center navbar flex-column">

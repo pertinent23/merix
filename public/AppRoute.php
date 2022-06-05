@@ -28,6 +28,22 @@
         )
     ) );
 
+    AppRouter::addRoute( 'install', (
+        useRoot(
+            'INSTALLATION DE MERIX',
+            [ AppPacker::addCSSView( '_form' ) ],
+            [ AppPacker::view( 'install' ) ]
+        )
+    ) );
+
+    AppRouter::addRoute( 'save', AppGlobal::useGet(
+        AppPacker::view( 'save' )
+    ) );
+
+    AppRouter::addRoute( 'create', AppGlobal::useGet(
+        AppPacker::view( 'create' )
+    ) );
+
     AppRouter::addRoute( 'account', fn() => (
         AppPacker::redirectTo( 'account/sites' )
     ) );
@@ -230,6 +246,14 @@
         )
     ) );
 
+    AppRouter::addRoute( 'account/settheme', AppGlobal::useGet(
+        AppPacker::view( 'settheme' )
+    ) );
+
+    AppRouter::addRoute( 'account/deploy', AppGlobal::useGet(
+        AppPacker::view( 'deploy' )
+    ) );
+
     AppRouter::addRoute( 'api/user/registration',  AppGlobal::usePost(
         AppPacker::view( 'api/registration' )
     ) );
@@ -296,9 +320,5 @@
 
     AppRouter::addRoute( 'api/employee', AppGlobal::usePost(
         AppPacker::view( 'api/employee' )
-    ) );
-
-    AppRouter::addRoute( 'account/settheme', AppGlobal::useGet(
-        AppPacker::view( 'settheme' )
     ) );
 ?>

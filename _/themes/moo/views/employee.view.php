@@ -4,7 +4,9 @@
     
     AppPacker::renderThemeView( 'moo', '@root', [
         'title' => 'EMPLOYEE',
-        'body' => [ AppPacker::theme( 'moo', 'pages/employee' ) ],
+        'body' => [ AppPacker::theme( 'moo', 'pages/employee', [
+            's' => isset( $s ) ? $s : 0 
+        ] ) ],
         'head' => [
             AppTheme::addCSSView( 'moo', 'global' )
         ]

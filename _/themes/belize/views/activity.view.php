@@ -4,7 +4,9 @@
     
     AppPacker::renderThemeView( 'belize', '@root', [
         'title' => 'ACTIVITE',
-        'body' => [ AppPacker::theme( 'belize', 'pages/activity' ) ],
+        'body' => [ AppPacker::theme( 'belize', 'pages/activity', [
+            's' => isset( $s ) ? $s : 0 
+        ] ) ],
         'head' => [
             AppTheme::addCSSView( 'belize', 'global' )
         ]

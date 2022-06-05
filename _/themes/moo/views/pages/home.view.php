@@ -5,7 +5,7 @@
     use App\modules\theme\AppThemeManager\AppThemeManager;
     use App\modules\theme\entity\AppEmployeeItem\AppEmployeeItem;
 
-    $id = AppGlobal::get( 's' ) ? AppGlobal::get( 's' ) : 0;
+    $id = AppGlobal::get( 's' ) ? AppGlobal::get( 's' ) : $s;
     $res =  AppThemeManager::getEmployees( intval( $id )  );
     $site = AppThemeManager::getSite( $id );
     $list = array_filter( $res, function ( AppEmployeeItem $item ) {

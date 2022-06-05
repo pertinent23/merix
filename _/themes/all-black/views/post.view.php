@@ -4,7 +4,9 @@
     
     AppPacker::renderThemeView( 'all-black', '@root', [
         'title' => 'ANNONCES',
-        'body' => [ AppPacker::theme( 'all-black', 'pages/post' ) ],
+        'body' => [ AppPacker::theme( 'all-black', 'pages/post', [
+            's' => isset( $s ) ? $s : 0 
+        ] ) ],
         'head' => [
             AppTheme::addCSSView( 'all-black', 'global' )
         ]

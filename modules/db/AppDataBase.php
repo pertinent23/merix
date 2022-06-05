@@ -147,8 +147,10 @@
                     );
                 } catch( PDOException $e ) {
                     http_response_code( 500 );
-                        AppPacker::render( 'error', [
-                            'message' => $e->getMessage()
+                        AppPacker::render( 'components/root', [
+                            'title'=> 'INSTALLATION DE MERIX', 
+                            'head' => [ AppPacker::addCSSView( '_form' ) ],
+                            'body' => [ AppPacker::view( 'install' ) ]
                         ] );
                     exit( 1 );
                 }

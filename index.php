@@ -9,18 +9,18 @@
         use App\modules\http\AppGlobal\AppGlobal;
 
     /** 
-        * when we receive a request in the
-        * first step we have to create 
-        * the database instance 
-    */    
-    AppEnv::initDB();
-
-    /** 
         *
         * here we are starting the 
         * route manager 
     */
     AppPacker::startRoutes();
+
+    /** 
+        * when we receive a request in the
+        * first step we have to create 
+        * the database instance 
+    */    
+    AppEnv::initDB();
 
     /** 
         *
@@ -49,6 +49,10 @@
                         $list = [ ];
                         if ( array_key_exists( 'params', $data ) AND is_array( $data[ 'params' ] ) ) {
                             $list = $data[ 'params' ];
+                            if ( array_key_exists( 'theme', $data ) AND is_string( $data[ 'theme' ] ) ) {
+                                AppPacker::renderThemeView( $data[ 'theme' ], $data[ 'view' ], $list );
+                                $global->send();
+                            }
                         }
                         AppPacker::render( $data[ 'view' ], $list );
                         $global->send();
