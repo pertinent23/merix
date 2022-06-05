@@ -1,11 +1,24 @@
-<?php 
-    use App\modules\AppTheme\AppTheme;
+<?php
     use App\modules\AppPacker\AppPacker;
+    use App\modules\http\AppGlobal\AppGlobal;
+    use App\modules\AppFileManager\AppFileManager;
+    use App\modules\theme\AppThemeManager\AppThemeManager;
+    use App\modules\theme\entity\AppEmployeeItem\AppEmployeeItem;
+
+    $id = AppGlobal::get( 's' ) ? AppGlobal::get( 's' ) : 0;
+    $res =  AppThemeManager::getEmployees( intval( $id )  );
+    $site = AppThemeManager::getSite( $id );
+    $list = array_filter( $res, function ( AppEmployeeItem $item ) {
+        $role = $item->getRole();
+        if ( $role->getLabel() === 'mayor' || $role->getLabel() === 'deputy-mayor'  ) {
+            return true;
+        }
+    } );
 ?>
 <nav class="w-100 d-flex align-items-center navbar flex-column">
     <section class="navbar-brand d-flex align-items-center">
         <i class="bi bi-building"></i>
-        <p class="navbar-title"> THE HALL NAME </p>
+        <p class="navbar-title"> <?= $site->getName() ?> </p>
         <span class="bar"></span>
     </section>
     <section class="navbar-container d-flex align-items-center space">
@@ -29,70 +42,45 @@
         <div class="page-presentation-image d-flex justify-content-center align-items-center">
             <div class="page-presentation-image-container d-flex justify-content-center align-items-center">
                 <img
-                    src="<?= AppTheme::getAssetsPath( 'all-black', 'eyasu-etsub-j3R9C-Xqe1w-unsplash.jpg' ) ?>" 
+                    src="<?= AppFileManager::getLink( $site->getFile()->getUrl() ) ?>" 
                     alt="Mairie Image"
                     class="w-100"
                 >
             </div>
         </div>
         <div class="page-presentation-data d-flex flex-column">
-            <h1> Nom de ma mairie </h1>
-            <h5 class="upper"> Slogan de la mairei </h5>
+            <h1> <?= $site->getName() ?> </h1>
+            <h5 class="upper">  <?= $site->getSlogan() ?> </h5>
             <h4>
                 <i class="bi bi-globe2"></i>
-                <span class="upper"> Pays </span>
+                <span class="upper">  <?= $site->getCountry() ?> </span>
             </h4>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed non risus. Suspendisse lectus tortor, 
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor. 
-                Cras elementum ultrices diam. Maecenas ligula massa, varius a, 
-                semper congue, euismod non, mi. Proin porttitor, orci nec nonummy 
+                <?= $site->getHistory() ?>
             </p>
         </div>
     </div>
     <section class="w-100 d-flex justify-content-center align-items-center page-item-container">
         <?php 
-            AppPacker::renderThemeView( 'all-black', 'not' );
+            if ( !count( $list) ) AppPacker::renderThemeView( 'all-black', 'not' );
+
+            foreach( $list as $item )  {
+                ?> 
+                    <div class="w-100 d-flex flex-column page-item">
+                        <div class="w-100 d-flex justify-content-center align-items-center page-item-image-container">
+                            <img 
+                                src="<?= AppFileManager::getLink( $item->getFile()->getUrl() ) ?>" 
+                                class="page-item-image w-100"
+                            />
+                        </div>
+                        <div class="w-100 d-flex flex-column align-items-center page-item-data-container">
+                            <h1> <?= $item->getLastName() ?>, <?= $item->getFirstName() ?> </h1>
+                            <h3> <?= $item->getRole()->getLabel() ?> </h3>
+                            <p> <?= $item->getBackground() ?> </p>
+                        </div>
+                    </div>
+                <?php
+            }
         ?>
-        <div class="w-100 d-flex flex-column page-item">
-            <div class="w-100 d-flex justify-content-center align-items-center page-item-image-container">
-                <img 
-                    src="<?= AppTheme::getAssetsPath( 'all-black', 'scott-webb-G1J3JoI91A4-unsplash.jpg' ) ?>" 
-                    class="page-item-image w-100"
-                />
-            </div>
-            <div class="w-100 d-flex flex-column align-items-center page-item-data-container">
-                <h1> TITLE </h1>
-                <h3> Sub title </h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, </p>
-            </div>
-        </div>
-        <div class="w-100 d-flex flex-column page-item">
-            <div class="w-100 d-flex justify-content-center align-items-center page-item-image-container">
-                <img 
-                    src="<?= AppTheme::getAssetsPath( 'all-black', 'scott-webb-G1J3JoI91A4-unsplash.jpg' ) ?>" 
-                    class="page-item-image w-100"
-                />
-            </div>
-            <div class="w-100 d-flex flex-column align-items-center page-item-data-container">
-                <h1> TITLE </h1>
-                <h3> Sub title </h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, </p>
-            </div>
-        </div>
-        <div class="w-100 d-flex flex-column page-item">
-            <div class="w-100 d-flex justify-content-center align-items-center page-item-image-container">
-                <img 
-                    src="<?= AppTheme::getAssetsPath( 'all-black', 'scott-webb-G1J3JoI91A4-unsplash.jpg' ) ?>" 
-                    class="page-item-image w-100"
-                />
-            </div>
-            <div class="w-100 d-flex flex-column align-items-center page-item-data-container">
-                <h1> TITLE </h1>
-                <h3> Sub title </h3>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, </p>
-            </div>
-        </div>
     </section>
 </main>

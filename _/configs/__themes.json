@@ -2,7 +2,7 @@
     "default": "all-black",
     "sites": {
         "3": "all-black",
-        "1": "moo"
+        "1": "all-black"
     },
     "list": [
         "all-black",

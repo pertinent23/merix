@@ -62,7 +62,7 @@
                         $item[ 'name' ],
                         $item[ 'description' ]
                     );
-                    $site->setPubId( intval( $item[ 'project_id' ] ) );
+                    $site->setPubId( intval( $item[ 'pub_id' ] ) );
                     $site->setCreatedDate( $item[ 'createdAt' ] );
                     $site->setUpdatedDate( $item[ 'updatedAt' ] );
                     return $site;

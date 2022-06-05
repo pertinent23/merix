@@ -1,6 +1,5 @@
 <?php 
     use App\modules\AppView\AppView; 
-    use App\modules\http\AppEnv\AppEnv;
     use App\modules\AppPacker\AppPacker;
     use App\modules\AppFileManager\AppFileManager;
 ?>
@@ -22,5 +21,8 @@
 <body>
     <?= isset( $body ) AND ( $body instanceof AppView OR is_array( $body ) ) ? AppPacker::showAll( $body ) : '' ?>
     <?= isset( $lazy ) AND ( $lazy instanceof AppView OR is_array( $lazy ) ) ? AppPacker::showAll( $lazy ) : '' ?>
+    <?php 
+        AppPacker::addJS( 'page/themes.tools' );
+    ?>
 </body>
 </html>
