@@ -62,6 +62,15 @@
         )
     ) );
 
+    AppRouter::addRoute( 'account/preview', (
+        useRoot(
+            'PREVISUALISATION',
+            [ AppPacker::addCSSView( '_preview' ) ], 
+            [ AppPacker::view( 'preview' ) ],
+            [ AppPacker::addJSView( 'page/preview' ) ]
+        )
+    ) );
+
     AppRouter::addRoute( 'account/settings', (
         useRoot(
             'PARAMETRES',

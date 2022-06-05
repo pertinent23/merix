@@ -1,5 +1,19 @@
 <?php 
+    use App\modules\AppFileManager\AppFileManager;
     use App\modules\AppPacker\AppPacker;
+    use App\modules\http\AppGlobal\AppGlobal;
+
+    $site_id = AppGlobal::get( 's' );
+    $user_id = AppGlobal::get( 'i' );
+
+    if ( !$site_id OR !$user_id ) {
+        AppPacker::redirectTo( 'account/sites' );
+    }
+
+    $data = [
+        's' => $site_id,
+        'i' => $user_id
+    ];
 ?>
 <header class="colored"></header>
 <nav class="d-flex flex-column justify-content-between align-items-center light">
@@ -161,6 +175,6 @@
         </div>
     </section>
 </main>
-<div class="d-flex justify-content-center align-items-center" id="run-button">
+<a href="<?= AppFileManager::getLink( 'account/preview', $data ) ?>" class="d-flex justify-content-center align-items-center" id="run-button">
     <i class="bi bi-skip-end-fill"></i>
-</div>
+</a>

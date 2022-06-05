@@ -1,3 +1,4 @@
 {
-    "default": "all-back"
+    "default": "all-back",
+    "sites": {}
 }
